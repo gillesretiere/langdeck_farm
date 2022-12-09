@@ -1,0 +1,39 @@
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+class InsertUser(BaseModel):
+    username: str
+
+class InsertLanguage(BaseModel):
+    language: str
+
+app = FastAPI()
+@app.get("/")
+async def root():
+    return {"message": "Hello You"}
+
+@app.get("/user/{id}")
+async def root(id):
+    return {"user_id":id}    
+
+@app.get("/country/{id}")
+async def get_country(id):
+    return {"country":id}   
+
+@app.post("/users")
+async def new_user(
+    username: InsertUser
+    ):
+    print(username)
+    return {
+        "message":username
+    }    
+
+@app.post("/languages")
+async def new_language(
+    language: InsertLanguage
+    ):
+    print(language)
+    return {
+        "message":language
+    }       
