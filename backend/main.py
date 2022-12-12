@@ -7,11 +7,22 @@ from routers.regions import router as regions_router
 from routers.countries import router as countries_router
 from routers.languages import router as languages_router
 
+HOST = config('HOST', cast=str)
+DOMAIN = config('DOMAIN', cast=str)
+
 origins = [
 "http://localhost",
 "http://localhost:8080",
 "http://localhost:3000",
 "http://localhost:8000",
+"http://"+HOST,
+"http://"+HOST+":8080",
+"http://"+HOST+":8000",
+"http://"+HOST+":3000",
+"http://"+DOMAIN,
+"http://"+DOMAIN+":8080",
+"http://"+DOMAIN+":8000",
+"http://"+DOMAIN+":3000",
 ]
 
 DB_URL = config('DB_URL', cast=str)
@@ -40,7 +51,4 @@ app.include_router(countries_router, prefix="/countries", tags=["countries"])
 app.include_router(languages_router, prefix="/languages", tags=["languages"])
 
 if __name__ == "__main__":
-    uvicorn.run(
-        "main:app",
-        reload=True
-    )
+    uvicorn.run("__main__:app",host='141.94.204.108',port=8000, reload=True)
