@@ -29,11 +29,13 @@ class RegionBase(MongoBaseModel):
     region_alpha2: str = Field(..., min_length=2)
     region_name: str = Field(..., min_length=3)
     region_name_fr: str = Field(...,  min_length=3)
+    region_picture: str = Field(...,  min_length=3)    
 
 class RegionUpdate(MongoBaseModel):
     region_alpha2: str = Field(..., min_length=2)
     region_name: Optional[str] = Field(..., min_length=3)
     region_name_fr: Optional[str] = Field(...,  min_length=3)
+    region_picture: Optional[str] = Field(...,  min_length=3)    
     
 class RegionDB(RegionBase):
     pass
