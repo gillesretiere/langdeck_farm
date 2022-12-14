@@ -11,6 +11,7 @@ const Header  = () => {
             <div className="pr-8 text-black para1">
                 <NavLink className={({ isActive }) => isActive ? "active-link" : "p-4"} to="/">Home</NavLink>
                 <NavLink className={({ isActive }) => isActive ? "active-link" : "p-4"} to="/regions">Regions</NavLink>
+                <NavLink className={({ isActive }) => isActive ? "active-link" : "p-4"} to="/countries">Countries</NavLink>
                 <NavLink className={({ isActive }) => isActive ? "active-link" : "p-4"} to="/languages">Languages</NavLink>
                 {/* <NavLink className={({ isActive }) => isActive ? "active-link" : "p-4"} to="/new">New Language</NavLink> */}
             </div>

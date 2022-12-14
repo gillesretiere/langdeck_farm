@@ -25,7 +25,7 @@ const Languages = () => {
   }
 
   useEffect(()=>{
-    fetch(`${BASE_URL}?language_name_fr=${languageName}&page=${page}`)
+    fetch(`${BASE_URL}?language_uid=${languageName}&page=${page}`)
         .then(response=>response.json())
         .then(json=>{
             setLanguages(json)
@@ -40,8 +40,8 @@ const Languages = () => {
         <label htmlFor="languages">Choose a language: </label>
             <select name="languages" id="languages" onChange={handleChangeLanguageName}>
                 <option value="">All languages</option>
-                <option value="eur">Europe</option>
-                <option value="asi">Asie</option>         
+                <option value="ger">Allemand</option>
+                <option value="dan">Danois</option>         
             </select>
             <label htmlFor="languages">Choose a page: </label>
             <select name="page" id="page" onChange={handleChangePage}>

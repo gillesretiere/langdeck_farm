@@ -25,7 +25,7 @@ const Regions = () => {
   }
 
   useEffect(()=>{
-    fetch(`${BASE_URL}?region_name_fr=${regionName}&page=${page}`)
+    fetch(`${BASE_URL}?region_uid=${regionName}&page=${page}`)
         .then(response=>response.json())
         .then(json=>{
             setRegions(json)
@@ -42,6 +42,9 @@ const Regions = () => {
                 <option value="">All regions</option>
                 <option value="eur">Europe</option>
                 <option value="asi">Asie</option>         
+                <option value="afr">Afrique</option>
+                <option value="ame">Amériques</option>      
+                <option value="oce">Océanie</option>                             
             </select>
             <label htmlFor="regions">Choose a page: </label>
             <select name="page" id="page" onChange={handleChangePage}>

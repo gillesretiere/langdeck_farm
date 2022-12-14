@@ -4,6 +4,9 @@ import {BrowserRouter,Routes,Route,} from "react-router-dom";
 import Region from './pages/Region';
 import Regions from './pages/Regions';
 import NewRegion from './pages/NewRegion';
+import Country from './pages/Country';
+import Countries from './pages/Countries';
+import NewCountry from './pages/NewCountry';
 import Language from './pages/Language';
 import Languages from './pages/Languages';
 import NewLanguage from './pages/NewLanguage';
@@ -19,6 +22,7 @@ root.render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="regions" element={<Regions />} />        
+        <Route path="countries" element={<Countries />} />        
         <Route path="languages" element={<Languages />} />
         <Route path="new" element={<NewLanguage />} />
         <Route path="languages/:id" element={<Language />} />
