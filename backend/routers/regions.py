@@ -11,8 +11,9 @@ router = APIRouter()
 async def list_regions(request:Request, region_uid: Optional[str]=None)-> List[RegionDB]:
     query={}
     if region_uid:
-        query[region_uid] = region_uid
+        query["region_uid"] = region_uid
     full_query = request.app.mongodb["regions"].find(query).sort("region_uid",1)
+    print (query)
     result = [RegionDB(**raw_region) async for raw_region in full_query]
     return result
 
@@ -50,4 +51,19 @@ async def create_region(request: Request, region: RegionBase = Body(...)):
         created_region = await request.app.mongodb["regions"].find_one({"_id": new_region.inserted_id})
         return JSONResponse(status_code=status.HTTP_201_CREATED, content=created_region)    
     raise HTTPException(status_code=409, detail=f"Region with {region} already exists.")
+
+# optional
+@router.get("/region_name_fr/{region_name_fr}", response_description="Get region_name overview")
+async def region_name(region_name_fr: str, request: Request):
+
+    query = [
+        {"$match": {"region_name_fr": region_name_fr}},
+        {"$sort": {"region_name": 1}},
+    ]
+
+    full_query = request.app.mongodb["regions"].aggregate(query)
+
+    results = [el async for el in full_query]
+
+    return results    
     

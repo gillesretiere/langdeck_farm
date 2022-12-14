@@ -25,7 +25,7 @@ async def create_country(request: Request, country: CountryBase = Body(...)):
 async def list_countries(request:Request, country_uid: Optional[str]=None)-> List[CountryDB]:
     query={}
     if country_uid:
-        query[country_uid] = country_uid
+        query["country_uid"] = country_uid
     full_query = request.app.mongodb["countries"].find(query).sort("country_uid",1)
     result = [CountryDB(**raw_country) async for raw_country in full_query]
     return result

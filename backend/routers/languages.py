@@ -11,7 +11,7 @@ router = APIRouter()
 async def list_languages(request:Request, language_uid: Optional[str]=None)-> List[LanguageDB]:
     query={}
     if language_uid:
-        query[language_uid] = language_uid
+        query["language_uid"] = language_uid
     full_query = request.app.mongodb["languages"].find(query).sort("language_uid",1)
     result = [LanguageDB(**raw_language) async for raw_language in full_query]
     return result
