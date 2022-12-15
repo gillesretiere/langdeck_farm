@@ -21,10 +21,11 @@ root.render(
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="regions" element={<Regions />} />        
-        <Route path="countries" element={<Countries />} />        
+        <Route path="regions" element={<Regions />} />    
+        <Route path="regions/:id" element={<Region />} />            
+        <Route path="countries" element={<Countries />} />      
         <Route path="languages" element={<Languages />} />
-        <Route path="new" element={<NewLanguage />} />
+        <Route path="newLanguage" element={<NewLanguage />} />
         <Route path="languages/:id" element={<Language />} />
         <Route path="*" element={
         <main style={{ padding: "1rem" }}>

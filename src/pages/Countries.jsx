@@ -40,11 +40,10 @@ const Countries = () => {
         <label htmlFor="countries">Choose a countryName: </label>
             <select name="countries" id="countries" onChange={handleChangeCountryName}>
                 <option value="">All countries</option>
-                <option value="afg">Afghanistan</option>
-                <option value="alb">Albanie</option>         
-                <option value="arg">Argentine</option>
-                <option value="rus">Russie</option>      
-                <option value="aut">Autriche</option>                             
+                {countries && countries.map(item => (
+                    <option value={item.country_uid}>{item.country_name_fr}</option>
+                ))}  
+                <option value="">All countries</option>                              
             </select>
             <label htmlFor="countries">Choose a page: </label>
             <select name="page" id="page" onChange={handleChangePage}>

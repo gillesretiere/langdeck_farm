@@ -1,5 +1,6 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
+import { Link, NavLink } from 'react-router-dom'
 import Layout from "../components/Layout"
 import LanguageCard from "../components/LanguageCard"
 import Loading from "../components/Loading"
@@ -40,8 +41,10 @@ const Languages = () => {
         <label htmlFor="languages">Choose a language: </label>
             <select name="languages" id="languages" onChange={handleChangeLanguageName}>
                 <option value="">All languages</option>
-                <option value="ger">Allemand</option>
-                <option value="dan">Danois</option>         
+                {languages && languages.map(item => (
+                    <option value={item.language_uid}>{item.language_name_fr}</option>
+                ))}        
+                <option value="">All languages</option>           
             </select>
             <label htmlFor="languages">Choose a page: </label>
             <select name="page" id="page" onChange={handleChangePage}>
@@ -52,6 +55,7 @@ const Languages = () => {
                 <option value="5">5</option>              
             </select>
         </div>
+        <NavLink className={({ isActive }) => isActive ? "active-link" : "p-4"} to="/newLanguage">New</NavLink>
         <div className="mx-8">                
             {isPending && <Loading languageName={languageName} />}             
                 <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">

@@ -1,6 +1,6 @@
-const Language = () => {
+const Region = () => {
   return (
-    <div>Language</div>
+    <div>Region</div>
   )
 }
-export default Language
+export default Region
