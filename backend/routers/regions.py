@@ -13,7 +13,6 @@ async def list_regions(request:Request, region_uid: Optional[str]=None)-> List[R
     if region_uid:
         query["region_uid"] = region_uid
     full_query = request.app.mongodb["regions"].find(query).sort("region_uid",1)
-    print (query)
     result = [RegionDB(**raw_region) async for raw_region in full_query]
     return result
 
