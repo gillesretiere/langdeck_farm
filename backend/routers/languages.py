@@ -6,6 +6,21 @@ from models import LanguageBase, LanguageDB, LanguageUpdate
 
 router = APIRouter()
 
+#--- list languages by country uid
+@router.get("/country/{uid}", response_description="list languages by country uid")
+async def list_languages_by_countryid (request: Request, uid: str):
+    print (uid)
+    query = [
+    {
+        '$match': {
+            'language_uid': uid
+        }
+    }]
+    full_query = request.app.mongodb['languages'].aggregate(query)
+    results = [el async for el in full_query]
+    return results
+
+
 #--- list all languages
 @router.get("/", response_description="List all languages")
 async def list_languages(request:Request, language_uid: Optional[str]=None)-> List[LanguageDB]:

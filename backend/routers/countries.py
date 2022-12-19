@@ -20,6 +20,14 @@ async def create_country(request: Request, country: CountryBase = Body(...)):
         raise HTTPException(status_code=409, detail=f"Region with {country} already exists.")
     raise HTTPException(status_code=404, detail=f"Region for this with {country} doesn't exists.")
 
+#--- list one country by region uid
+@router.get("/region/{uid}", response_description="List a country by uid")
+async def list_country_by_id (request: Request, uid: str):
+    print (uid)
+    if (country := await request.app.mongodb["countries"].find_one({"country_uid":uid})) is not None:
+        return CountryDB(**country)
+    raise HTTPException (status_code=404, detail=f"Country with uid {uid} not found.")  
+    
 #--- list all countries
 @router.get("/", response_description="List all countries")
 async def list_countries(request:Request, country_uid: Optional[str]=None)-> List[CountryDB]:

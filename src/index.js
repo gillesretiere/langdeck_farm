@@ -10,6 +10,9 @@ import NewCountry from './pages/NewCountry';
 import Language from './pages/Language';
 import Languages from './pages/Languages';
 import NewLanguage from './pages/NewLanguage';
+import RegionCountries from './pages/RegionCountries';
+import RegionCountry from './pages/RegionCountry';
+import CountryLanguages from './pages/CountryLanguages';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -24,9 +27,14 @@ root.render(
         <Route path="regions" element={<Regions />} />    
         <Route path="regions/:id" element={<Region />} />            
         <Route path="countries" element={<Countries />} />      
+        <Route path="countries/:id" element={<Country />} />             
+        <Route path="countries/region/:id" element={<RegionCountry />} />            
         <Route path="languages" element={<Languages />} />
+        <Route path="languages/country/:id" element={<CountryLanguages />} />
         <Route path="newLanguage" element={<NewLanguage />} />
         <Route path="languages/:id" element={<Language />} />
+        <Route path="regionCountries" element={<RegionCountries />} />
+        <Route path="regionCountries/:id" element={<RegionCountry />} />
         <Route path="*" element={
         <main style={{ padding: "1rem" }}>
           <p>There's nothing here!</p>

@@ -6,6 +6,7 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from routers.regions import router as regions_router
 from routers.countries import router as countries_router
 from routers.languages import router as languages_router
+from routers.regionCountries import router as regionCountries_router
 
 HOST = config('HOST', cast=str)
 DOMAIN = config('DOMAIN', cast=str)
@@ -49,6 +50,7 @@ async def shutdown_db_client():
 app.include_router(regions_router, prefix="/regions", tags=["regions"])
 app.include_router(countries_router, prefix="/countries", tags=["countries"])
 app.include_router(languages_router, prefix="/languages", tags=["languages"])
+app.include_router(regionCountries_router, prefix="/regionCountries", tags=["regionCountries"])
 
 if __name__ == "__main__":
     uvicorn.run("__main__:app",host='141.94.204.108',port=8000, reload=True)

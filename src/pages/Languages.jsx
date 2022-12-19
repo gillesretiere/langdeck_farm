@@ -1,4 +1,5 @@
 import React from 'react'
+// hooks
 import {useState, useEffect} from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import Layout from "../components/Layout"
@@ -7,7 +8,9 @@ import Loading from "../components/Loading"
 
 let BASE_URL = "http://141.94.204.108:8000/languages"
 
+
 const Languages = () => {
+
   const [languages, setLanguages] = useState([])
   const [languageName, setLanguageName] = useState('')
   const [isPending, setIsPending] = useState(true) 
