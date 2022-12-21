@@ -1,6 +1,6 @@
 from bson import ObjectId
 from pydantic import Field, BaseModel
-from typing import Optional, List
+from typing import Optional, List, Dict, Any
 
 class PyObjectId(ObjectId):
     @classmethod
@@ -40,14 +40,18 @@ class RegionUpdate(MongoBaseModel):
 class RegionDB(RegionBase):
     pass
 
+class CountryByLanguages (MongoBaseModel):
+    language_uid: Optional[str] = Field(..., min_length=3)
+    language_name_fr: Optional[str] = Field(...)
+
 # Countries
 class CountryBase(MongoBaseModel):
     country_uid: str = Field(..., min_length=3, max_length=3)
     country_iso2: str = Field(..., min_length=2, max_length=2)
     country_iso3: str = Field(..., min_length=3, max_length=3)
-    country_name_en: str = Field(..., min_length=3)
-    country_name_fr: str = Field(...,  min_length=3)
-    country_name_native: str = Field(..., min_length=3)
+    country_name_en: str = Field(...)
+    country_name_fr: str = Field(...)
+    country_name_native: str = Field(...)
     country_national_flag: str = Field(...,  min_length=3)
     region_uid: str = Field(...,  min_length=3)
     country_region_fr: str = Field(..., min_length=3)
@@ -55,14 +59,15 @@ class CountryBase(MongoBaseModel):
     country_xy: str = Field(...)
     country_summary: str = Field(...)
     country_languages_summary: str = Field(...)
+    country_languages : Any
 
 class CountryUpdate(MongoBaseModel):
     country_uid: Optional[str] = Field(..., min_length=3, max_length=3)
     country_iso2: Optional[str] = Field(..., min_length=2, max_length=2)
     country_iso3: Optional[str] = Field(..., min_length=3, max_length=3)
-    country_name_en: Optional[str] = Field(..., min_length=3)
-    country_name_fr: Optional[str] = Field(...,  min_length=3)
-    country_name_native: Optional[str] = Field(..., min_length=3)
+    country_name_en: Optional[str] = Field(...)
+    country_name_fr: Optional[str] = Field(...)
+    country_name_native: Optional[str] = Field(...)
     country_national_flag: Optional[str] = Field(...,  min_length=3)
     region_uid: Optional[str] = Field(...,  min_length=3)
     country_region_fr: Optional[str] = Field(..., min_length=3)
@@ -70,6 +75,7 @@ class CountryUpdate(MongoBaseModel):
     country_xy: Optional[str] = Field(...)
     country_summary: Optional[str] = Field(...)
     country_languages_summary: Optional[str] = Field(...)    
+    country_languages : Optional [list]
     
 class CountryDB(CountryBase):
     pass

@@ -1,4 +1,5 @@
 import csv
+import json
 from fastapi.encoders import jsonable_encoder
 
 # dotenv environment variables
@@ -23,9 +24,15 @@ collection = db[config['COLLECTION_NAME']]
 for rec in name_records:
     try:
         ctry = jsonable_encoder(CountryBase(**rec))  
-        print("Inserting:",ctry)
+        
+        if len(ctry["country_languages"]):
+            ctry["country_languages"] = eval(ctry["country_languages"])
+        else :
+            ctry["country_languages"] = []
+        #print (ctry["country_languages"])
+        #print("Inserting:",ctry)
         collection.insert_one(ctry)
 
     except Exception as e:
-        print(e)
+        print(ctry)
         pass
