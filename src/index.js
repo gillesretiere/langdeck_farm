@@ -13,6 +13,7 @@ import NewLanguage from './pages/NewLanguage';
 import RegionCountries from './pages/RegionCountries';
 import RegionCountry from './pages/RegionCountry';
 import CountryLanguages from './pages/CountryLanguages';
+import LanguageCountries from './pages/LanguageCountries';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -23,7 +24,7 @@ root.render(
   <React.StrictMode>
       <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<Regions />} />
         <Route path="regions" element={<Regions />} />    
         <Route path="regions/:id" element={<Region />} />            
         <Route path="countries" element={<Countries />} />      
@@ -35,6 +36,7 @@ root.render(
         <Route path="languages/:id" element={<Language />} />
         <Route path="regionCountries" element={<RegionCountries />} />
         <Route path="regionCountries/:id" element={<RegionCountry />} />
+        <Route path="countries/language/:id" element={<LanguageCountries />} />
         <Route path="*" element={
         <main style={{ padding: "1rem" }}>
           <p>There's nothing here!</p>

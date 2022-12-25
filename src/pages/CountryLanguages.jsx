@@ -43,29 +43,9 @@ const CountryLanguages = () => {
 
   return (
     <Layout>
-        <h2 className="text-lg text-center my-4">Languages - {languageName?languageName:"all languages"}</h2>
-        <div className="mx-8">
-        <label htmlFor="languages">Choose a language: </label>
-            <select name="languages" id="languages" onChange={handleChangeLanguageName}>
-                <option value="">All languages</option>
-                {languages && languages.map(item => (
-                    <option value={item.language_uid}>{item.language_name_fr}</option>
-                ))}        
-                <option value="">All languages</option>           
-            </select>
-            <label htmlFor="languages">Choose a page: </label>
-            <select name="page" id="page" onChange={handleChangePage}>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>                   
-                <option value="5">5</option>              
-            </select>
-        </div>
-        <NavLink className={({ isActive }) => isActive ? "active-link" : "p-4"} to="/newLanguage">New</NavLink>
         <div className="mx-8">                
             {isPending && <Loading languageName={languageName} />}             
-                <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+              <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
                     {languages && languages.map(
                     (el)=>{
                         return (                               
@@ -74,7 +54,6 @@ const CountryLanguages = () => {
                     }
                     )}
                 </div>
-            
         </div> 
     </Layout>
   )

@@ -10,6 +10,7 @@ body {
     font-family: 'Euclid Circular B', sans-serif;
     font-weight: 400;
     font-style: normal;
+    background-color: #ecf3f4;
 }
 .logo {
     background-color: #43BED9;
@@ -17,6 +18,10 @@ body {
 
 .logo img{
     width:80px;
+}
+
+.card {
+    background-color: #FFFFFF;
 }
 
 .r-card {
@@ -45,12 +50,13 @@ body {
     font-family: neue-haas-grotesk-display,sans-serif;
     font-weight: 600;
     font-style: normal;  
-    font-size: 2rem;
+    font-size: 2em;
     letter-spacing:-1px;
+    margin-bottom: 5px;    
 }
 
 .c-card-img img {
-    width:50%;
+    width:auto;
 }
 
 .l-card {
@@ -62,6 +68,72 @@ body {
     font-family: neue-haas-grotesk-display,sans-serif;
     font-weight: 600;
     font-style: normal;
-    font-size: 2rem;
+    font-size: 2em;
     letter-spacing:-1px;
+}
+
+/* https://dev.to/drews256/ridiculously-easy-row-and-column-layouts-with-flexbox-1k01 */
+.card-wrapper-country {
+    padding: 5px;
+    background-color: #ffffff;
+    font-family: 'Euclid Circular B', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 0.875em;    
+}
+
+.card-wrapper-country-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  
+.card-wrapper-country-column-left {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+    padding: 8px;
+  }
+
+.card-wrapper-country-column-right {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+    padding: 8px;
+    border-left: 1px solid #dddddd;
+}
+
+.card-wrapper-country-flag {
+    margin : 10px 0px 10px 0px;
+}
+
+.card-wrapper-country-mappos {
+    font-family: 'Euclid Circular B', sans-serif;
+    font-weight: 600;
+    font-style: bold;
+    font-size: 0.875em;    
+}
+
+.card-wrapper-country-mappos-world {
+    margin:10px;
+}
+
+.card-wrapper-country-mappos-region {
+    margin:10px;
+}
+
+.card-wrapper-country-mappos-local {
+    margin:10px;
+}
+
+.huerotate { 
+    /* https://codepen.io/sosuke/pen/Pjoqqp */
+    filter: brightness(0.9) invert(.6) sepia(.3) hue-rotate(100deg) saturate(200%);
+}
+
+.bg-light-green {
+    background-color: #ebf8e7;
 }

@@ -41,11 +41,9 @@ const RegionCountry = () => {
 
   return (
     <Layout>
-      <h2 className="text-lg text-center my-4">Countries - {id?id:"all countries"}</h2>
-      <div>RegionCountry</div>
       <div className="mx-8">                
             {isPending && <Loading countryName={countryName} />}             
-                <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+              <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
                     {countries && countries.map(
                     (el)=>{
                         return (                               

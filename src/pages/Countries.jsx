@@ -35,28 +35,9 @@ const Countries = () => {
 
   return (
     <Layout>
-        <h2 className="text-lg text-center my-4">Countries - {countryName?countryName:"all countries"}</h2>
-        <div className="mx-8">
-        <label htmlFor="countries">Choose a countryName: </label>
-            <select name="countries" id="countries" onChange={handleChangeCountryName}>
-                <option value="">All countries</option>
-                {countries && countries.map(item => (
-                    <option value={item.country_uid}>{item.country_name_fr}</option>
-                ))}  
-                <option value="">All countries</option>                              
-            </select>
-            <label htmlFor="countries">Choose a page: </label>
-            <select name="page" id="page" onChange={handleChangePage}>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>                   
-                <option value="5">5</option>              
-            </select>
-        </div>
         <div className="mx-8">                
             {isPending && <Loading countryName={countryName} />}             
-                <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+             <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
                     {countries && countries.map(
                     (el)=>{
                         return (                               
@@ -65,7 +46,6 @@ const Countries = () => {
                     }
                     )}
                 </div>
-            
         </div> 
     </Layout>
   )

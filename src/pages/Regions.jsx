@@ -35,29 +35,9 @@ const Regions = () => {
 
   return (
     <Layout>
-        <h2 className="text-lg text-center my-4">Regions - {regionName?regionName:"all regions"}</h2>
-        <div className="mx-8">
-        <label htmlFor="regions">Choose a region: </label>
-            <select name="regions" id="regions" onChange={handleChangeRegionName}>
-                <option value="">All regions</option>
-                <option value="eur">Europe</option>
-                <option value="asi">Asie</option>         
-                <option value="afr">Afrique</option>
-                <option value="ame">Amériques</option>      
-                <option value="oce">Océanie</option>                             
-            </select>
-            <label htmlFor="regions">Choose a page: </label>
-            <select name="page" id="page" onChange={handleChangePage}>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>                   
-                <option value="5">5</option>              
-            </select>
-        </div>
         <div className="mx-8">                
             {isPending && <Loading regionName={regionName} />}             
-                <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+                <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
                     {regions && regions.map(
                     (el)=>{
                         return (                               
@@ -66,7 +46,6 @@ const Regions = () => {
                     }
                     )}
                 </div>
-            
         </div> 
     </Layout>
   )
