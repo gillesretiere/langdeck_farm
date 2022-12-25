@@ -6,6 +6,31 @@ from models import CountryBase, CountryDB, CountryUpdate
 
 router = APIRouter()
 
+#--- list countries by language uid
+@router.get("/language/{uid}", response_description="list countries by language uid")
+async def list_countries_by_lang_id (request: Request, uid: str):
+    query = [
+    {
+        '$match': {
+            'language_uid': uid
+        }
+    }, {"$project": {"language_countries.alpha-2_code":1}}]
+    full_query = request.app.mongodb['languages'].aggregate(query)
+    results = [el["language_countries"] async for el in full_query][0]
+    vk = []
+    for i in results:
+        vk.append(i["alpha-2_code"].upper())
+    query = [
+    {
+        '$match': {
+            'country_iso2': {"$in":vk}
+        }
+    }]
+    full_query = request.app.mongodb['countries'].aggregate(query)
+    results = [el async for el in full_query]
+    return results
+
+
 #--- insert one country
 @router.post("/", response_description="Add new country")
 async def create_country(request: Request, country: CountryBase = Body(...)):

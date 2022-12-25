@@ -9,37 +9,25 @@ router = APIRouter()
 #--- list languages by country uid
 @router.get("/country/{uid}", response_description="list languages by country uid")
 async def list_languages_by_countryid (request: Request, uid: str):
-    print (uid)
     query = [
     {
         '$match': {
-            #'language_uid': uid
             'country_uid': uid
         }
     }, {"$project": {"country_languages.language_uid":1}}]
-    # 1 : query all language_uid
     full_query = request.app.mongodb['countries'].aggregate(query)
     results = [el["country_languages"] async for el in full_query][0]
-
     vk = []
     for i in results:
         vk.append(i["language_uid"])
-
-    print(vk)
-
     query = [
     {
         '$match': {
-            #'language_uid': uid
             'language_uid': {"$in":vk}
         }
     }]
-
-    print (query)
-
     full_query = request.app.mongodb['languages'].aggregate(query)
     results = [el async for el in full_query]
-    print (results)
     return results
 
 

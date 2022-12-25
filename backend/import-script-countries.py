@@ -19,7 +19,7 @@ client = MongoClient()
 
 client = MongoClient(config['DB_URL'])
 db = client[config['DB_NAME']]
-collection = db[config['COLLECTION_NAME']]
+collection = db[config['COUNTRY_COLLECTION_NAME']]
 
 for rec in name_records:
     try:
@@ -30,9 +30,9 @@ for rec in name_records:
         else :
             ctry["country_languages"] = []
         #print (ctry["country_languages"])
-        #print("Inserting:",ctry)
+        print("Inserting:",ctry)
         collection.insert_one(ctry)
 
     except Exception as e:
-        print(ctry)
+        print(e)
         pass

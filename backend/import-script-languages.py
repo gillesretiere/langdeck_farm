@@ -1,4 +1,4 @@
-import csv
+import csv, json
 from fastapi.encoders import jsonable_encoder
 
 # dotenv environment variables
@@ -18,14 +18,17 @@ client = MongoClient()
 
 client = MongoClient(config['DB_URL'])
 db = client[config['DB_NAME']]
-collection = db[config['COLLECTION_NAME']]
+collection = db[config['LANGUAGE_COLLECTION_NAME']]
 
 for rec in name_records:
     try:
         lang = jsonable_encoder(LanguageBase(**rec))  
+        if len(lang["language_countries"]):
+            lang["language_countries"] = eval(lang["language_countries"])
         print("Inserting:",lang)
         collection.insert_one(lang)
 
     except Exception as e:
         print(e)
         pass
+

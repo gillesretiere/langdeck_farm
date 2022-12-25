@@ -43,6 +43,10 @@ class RegionDB(RegionBase):
 class CountryByLanguages (MongoBaseModel):
     language_uid: Optional[str] = Field(..., min_length=3)
     language_name_fr: Optional[str] = Field(...)
+    popularity : Optional[str] = Field(...)
+    speakers :Optional[int]
+    is_official : Optional[str] = Field(...)
+    language_name_fr: Optional[str] = Field(...)
 
 # Countries
 class CountryBase(MongoBaseModel):
@@ -60,6 +64,7 @@ class CountryBase(MongoBaseModel):
     country_summary: str = Field(...)
     country_languages_summary: str = Field(...)
     country_languages : Any
+    country_desc : str = Field(...)
 
 class CountryUpdate(MongoBaseModel):
     country_uid: Optional[str] = Field(..., min_length=3, max_length=3)
@@ -75,8 +80,9 @@ class CountryUpdate(MongoBaseModel):
     country_xy: Optional[str] = Field(...)
     country_summary: Optional[str] = Field(...)
     country_languages_summary: Optional[str] = Field(...)    
-    country_languages : Optional [list]
-    
+    country_languages : Optional [Any]
+    country_desc : Optional[str] = Field(...)
+
 class CountryDB(CountryBase):
     pass
 
@@ -84,11 +90,13 @@ class CountryDB(CountryBase):
 class LanguageBase(MongoBaseModel):
     language_uid: str = Field(..., min_length=3, max_length=3)
     language_iso2: str = Field(..., min_length=2, max_length=2)
-    language_iso2_google: str = Field(..., min_length=2, max_length=5)
+    language_iso2_google: Optional[str] = Field(..., min_length=2, max_length=5)
     language_name_en: str = Field(..., min_length=3)
     language_name_fr: str = Field(...,  min_length=3)
     language_name_native: str = Field(..., min_length=3)
     language_wals_code: str = Field(...,  min_length=3)
+    language_desc: Optional[str] = Field(...)
+    language_countries : Any
 
 class LanguageUpdate(MongoBaseModel):
     language_uid: Optional[str] = Field(..., min_length=3, max_length=3)
@@ -98,6 +106,8 @@ class LanguageUpdate(MongoBaseModel):
     language_name_fr: Optional[str] = Field(...,  min_length=3)
     language_name_native: Optional[str] = Field(..., min_length=3)
     language_wals_code: Optional[str] = Field(...,  min_length=3)
+    language_desc: Optional[str] = Field(...)
+    language_countries : Optional[Any]
 
 class LanguageDB(LanguageBase):
     pass
