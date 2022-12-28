@@ -44,6 +44,7 @@ class CountryByLanguages (MongoBaseModel):
     language_uid: Optional[str] = Field(..., min_length=3)
     language_name_fr: Optional[str] = Field(...)
     popularity : Optional[str] = Field(...)
+    popularity_as_float : Optional[float] = Field(...)
     speakers :Optional[int]
     is_official : Optional[str] = Field(...)
     language_name_fr: Optional[str] = Field(...)
@@ -64,7 +65,7 @@ class CountryBase(MongoBaseModel):
     country_summary: str = Field(...)
     country_languages_summary: str = Field(...)
     country_languages : Any
-    country_desc : str = Field(...)
+    country_mapicon : str = Field(...)
 
 class CountryUpdate(MongoBaseModel):
     country_uid: Optional[str] = Field(..., min_length=3, max_length=3)
