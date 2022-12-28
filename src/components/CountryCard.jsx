@@ -1,8 +1,18 @@
 import { Link } from "react-router-dom"
 import ChartCountryLanguages from "../components/ChartCountryLanguages"
 
+/*https://shaquillegalimba.medium.com/how-to-import-multiple-images-in-react-1936efeeae7b*/
+require.context('../assets/images', false, /\.(png|jpe?g|svg)$/)
+
+function importAll(r) {
+  let images = {};
+   r.keys().forEach((item, index) => { images[item.replace('./', '')] = r(item); });
+  return images
+ }
+const AllImages = importAll(require.context('../assets/images', false, /\.(png|jpe?g|svg)$/));
+
 const CountryCard = ({country}) => {
-    let {country_uid, country_name_en, country_name_fr, country_name_native, country_iso2, country_national_flag, country_summary, country_region_fr, country_languages} = country   
+    let {country_uid, region_uid, country_name_en, country_name_fr, country_name_native, country_iso2, country_national_flag, country_summary, country_region_fr, country_languages} = country   
       
     return (
     // <Link to={`/languages/country/${country_uid}`}>
@@ -25,11 +35,8 @@ const CountryCard = ({country}) => {
                     <img src="https://res.cloudinary.com/dhc7ovnwk/image/upload/v1671982019/81928-and-map-globe-black-world-white-1240_o3i84d.png" className="huerotate"></img>
                   </div>
                   <div className="c-card-img card-wrapper-country-mappos-region"><p>{country_region_fr}</p>
-                    <img src="https://res.cloudinary.com/dhc7ovnwk/image/upload/v1671997599/asia-silhouette_zw1swb.png" className="huerotate"></img>
-                  </div>                  
-                  <div className="c-card-img card-wrapper-country-mappos-local">
-                    <img src="https://res.cloudinary.com/dhc7ovnwk/image/upload/v1671978153/langdeck/assets/images/afghanistan-silhouette.png" className="huerotate"></img>
-                  </div> 
+                    <img src={AllImages[`${region_uid+".png"}`]} className="huerotate"></img>
+                  </div>                               
                 </div>                  
               </div>                
             </div>
