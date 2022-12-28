@@ -14,7 +14,7 @@ const ChartCountryLanguages = ({language}) => {
                         {width: `5%`, height: `5%`} }>&nbsp;
                     </div>                    
                 </div>
-                {popularity_as_float>0 ? <div className="language-chart-item-3">{popularity}</div> : <div className="language-chart-item-3">UNK</div> }
+                {popularity_as_float>0 ? <div className="language-chart-item-3">{popularity}</div> : <div className="language-chart-item-3">?</div> }
             </div>
         </div>        
     )

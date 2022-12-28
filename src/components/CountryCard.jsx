@@ -22,11 +22,15 @@ const CountryCard = ({country}) => {
           <div className="card-wrapper-country">
             <div className="card-wrapper-country-row">
               <div className="card-wrapper-country-column-left">
-                <div className="c-card-img card-wrapper-country-flag"><img src={country_national_flag}></img></div>
-                <div>Country (en): {country_name_en}</div>
-                <div>Country (native): <span className="font-semibold text-blue-600">{country_name_native}</span></div>
-                <div>Code Alpha-2: {country_iso2}</div>         
-                <div>{country_summary}</div>       
+                <div className="c-card-img card-wrapper-country-flag flag"><img src={country_national_flag}></img></div>
+                  <div className="wrtx text-base">
+                    <div className="text-xs">Country (en):</div>
+                    <div className="font-bold">{country_name_en}</div>
+                    <div className="text-xs">Country (native):</div>
+                    <div className="font-bold">{country_name_native}</div>
+                    <div className="text-xs">Alpha-2:</div>
+                    <div className="font-bold">{country_iso2}</div>                                        
+                  </div>
               </div>
               <div className="card-wrapper-country-column-right bg-light-green">
                 <div className="card-wrapper-country-mappos">
@@ -42,7 +46,7 @@ const CountryCard = ({country}) => {
             </div>
             <div className="card-wrapper-country-row">  
               <div className="card-wrapper-country-column-left">
-                  {country_languages && country_languages.map(
+                  {country_languages && country_languages.sort((a, b) => a.popularity_as_float > b.popularity_as_float?-1:1).map(
                     (el)=>{
                       return (                  
                         <ChartCountryLanguages key={el.language_uid} language = {el} />                                 
