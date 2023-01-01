@@ -4,3 +4,4 @@ backend/langdeck-farm/
 *.old
 *.old
 src/components/ChartCountryLanguages.jsx
+backend/.env
