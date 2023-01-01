@@ -1,7 +1,6 @@
 import React from 'react'
 // hooks
 import {useState, useEffect} from 'react'
-import { Link, NavLink } from 'react-router-dom'
 import Layout from "../components/Layout"
 import LanguageCard from "../components/LanguageCard"
 import Loading from "../components/Loading"
@@ -15,18 +14,6 @@ const Languages = () => {
   const [languageName, setLanguageName] = useState('')
   const [isPending, setIsPending] = useState(true) 
   const [page, setPage] = useState(1) 
-
-  const handleChangeLanguageName = (ev) => {
-    setLanguages([])        
-    setLanguageName(ev.target.value)
-    setIsPending(true)
-  }
-
-  const handleChangePage = (ev) => {
-    setLanguages([])        
-    setPage(ev.target.value)
-    setIsPending(true)
-  }
 
   useEffect(()=>{
     fetch(`${BASE_URL}?language_uid=${languageName}&page=${page}`)
@@ -44,6 +31,7 @@ const Languages = () => {
                 <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
                     {languages && languages.map(
                     (el)=>{
+                      console.log(languages)
                         return (                               
                             <LanguageCard key={el._id} language = {el} />                           
                         )

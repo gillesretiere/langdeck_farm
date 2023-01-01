@@ -9,7 +9,7 @@ const ChartCountryLanguages = ({language}) => {
             <div className="language-chart">
                 <div className="language-chart-item-1">{language_name_fr}</div>
                 <div className="language-chart-item-2">
-                    <div class="circle" style={popularity_as_float>0 ? 
+                    <div className="circle centered-circle-ctry" style={popularity_as_float>0 ? 
                         {width: `${popularity_as_float*100}%`, height: `${popularity_as_float*100}%`} : 
                         {width: `5%`, height: `5%`} }>&nbsp;
                     </div>                    
@@ -21,4 +21,3 @@ const ChartCountryLanguages = ({language}) => {
 }
 
 export default ChartCountryLanguages
-
