@@ -14,12 +14,12 @@ async def list_countries_by_lang_id (request: Request, uid: str):
         '$match': {
             'language_uid': uid
         }
-    }, {"$project": {"language_countries.alpha-2_code":1}}]
+    }, {"$project": {"language_countries.country_iso2":1}}]
     full_query = request.app.mongodb['languages'].aggregate(query)
     results = [el["language_countries"] async for el in full_query][0]
     vk = []
     for i in results:
-        vk.append(i["alpha-2_code"].upper())
+        vk.append(i["country_iso2"].upper())
     query = [
     {
         '$match': {
