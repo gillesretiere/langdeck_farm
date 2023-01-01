@@ -1,0 +1,6 @@
+
+backend/langdeck-farm/
+*.old
+*.old
+*.old
+src/components/ChartCountryLanguages.jsx
