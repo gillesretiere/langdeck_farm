@@ -44,7 +44,8 @@ root.setThemes([
   // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
   var polygonSeries = chart.series.push(
     am5map.MapPolygonSeries.new(root, {
-      geoJSON: am5geodata_worldLow
+      geoJSON: am5geodata_worldLow,
+      fill: am5.color(0xFA7F08)
     })
   );
   

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import ChartCountryLanguages from "../components/ChartCountryLanguages"
-import AmChart from "../components/AmChart"
+import CountryMapChart from "../components/CountryMapChart"
 
 /*https://shaquillegalimba.medium.com/how-to-import-multiple-images-in-react-1936efeeae7b*/
 require.context('../assets/images', false, /\.(png|jpe?g|svg)$/)
@@ -17,7 +17,7 @@ const CountryCard = ({country}) => {
       
     return (
     // <Link to={`/languages/country/${country_uid}`}>
-    <Link to={`/languages/country/${country_uid}`}>
+    
     <div className="shadow-lg p-5 flex flex-col bg-FarmWhite rounded-lg transition ease-in-out hover:scale-105 duration-300 card">
         <div className="text-center h-24 c-card">{country_name_fr}</div>
           <div className="card-wrapper">
@@ -33,32 +33,42 @@ const CountryCard = ({country}) => {
                     <div className="font-bold">{country_iso2}</div>                                        
                   </div>
               </div>
-              <div className="card-wrapper-column-right bg-light-green">
+            
+              <div className="card-wrapper-column-right bg-light-green">{country_uid}
+
+                
+                <Link to={`/countries/${country_uid}`}>
                 <div className="card-wrapper-country-mappos">
-                  <h1>Situation géographique</h1>
                   <div className="c-card-img card-wrapper-country-mappos-world">
+                    
                     {/*<img src="https://res.cloudinary.com/dhc7ovnwk/image/upload/v1671982019/81928-and-map-globe-black-world-white-1240_o3i84d.png" className="huerotate"></img>*/}
                   </div>
-                  <div className="c-card-img card-wrapper-country-mappos-region"><p>{country_region_fr}</p>
+                  <div className="c-card-img card-wrapper-country-mappos-region">
                     <img src={AllImages[`${region_uid+".png"}`]} className="huerotate"></img>
                   </div>                               
-                </div>                  
+                </div>   
+                </Link>               
               </div>                
             </div>
+
+            <Link to={`/languages/country/${country_uid}`}>
             <div className="card-wrapper-row">  
               <div className="card-wrapper-column-left">
+              
                   {country_languages && country_languages.sort((a, b) => a.popularity_as_float > b.popularity_as_float?-1:1).map(
                     (el)=>{
                       return (                  
                         <ChartCountryLanguages key={el.language_uid} language = {el} />                                 
                     )
                     }
-                  )}                
+                  )}    
+          
               </div>
             </div>
+            </Link>  
         </div>
     </div>
-    </Link>
+
   )
 }
 export default CountryCard

@@ -7,11 +7,11 @@ import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 
 import AmChart from "../components/AmChart"
 
-const GeoDataCard = () => {
-
+const GeoDataCard = ({language}) => {
+  let {language_uid} = language 
   return (
     <div>
-        GeoDataCard<AmChart></AmChart>
+        GeoDataCard<AmChart key={language_uid} language={language_uid}></AmChart>
     </div>
   )
 }

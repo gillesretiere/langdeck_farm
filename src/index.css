@@ -287,8 +287,21 @@ body {
     background: #FA7F08;
   }
 
-  #chartdiv {
+  #country-map-component {
+    padding: 20px;
+    margin:20px;
+  }
+
+  #country-map-component h1 {
+    color:#88ac9b;
+    font-family: neue-haas-grotesk-display,sans-serif;
+    font-weight: 600;
+    font-style: bold;
+    font-size: 2em;
+    letter-spacing:-1px;
+  }
+
+  div[id^='chartdiv']{
     width: 100%;
-    height: 100px;
-    overflow: hidden;
+    height: 500px;
   }

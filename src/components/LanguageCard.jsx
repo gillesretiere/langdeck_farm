@@ -28,7 +28,7 @@ const LanguageCard = ({language}) => {
               </div>
             </div>
             <div className="card-wrapper-column-right bg-light-orange">
-              <GeoDataCard>GeoDataCard Map</GeoDataCard>
+             {/*<GeoDataCard key={language_uid} language={language}>GeoDataCard Map</GeoDataCard>*/}
 
             </div>            
           </div>
