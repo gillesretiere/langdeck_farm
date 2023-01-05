@@ -48,7 +48,6 @@ async def create_country(request: Request, country: CountryBase = Body(...)):
 #--- list one country by region uid
 @router.get("/region/{uid}", response_description="List a country by uid")
 async def list_country_by_id (request: Request, uid: str):
-    print (uid)
     if (country := await request.app.mongodb["countries"].find_one({"country_uid":uid})) is not None:
         return CountryDB(**country)
     raise HTTPException (status_code=404, detail=f"Country with uid {uid} not found.")  
@@ -64,9 +63,11 @@ async def list_countries(request:Request, country_uid: Optional[str]=None)-> Lis
     return result
 
 #--- list one country by uid
-@router.get("/{uid}", response_description="List a country by uid")
+@router.get("/{uid}", response_description="country by uid")
 async def list_country_by_id (request: Request, uid: str):
+    print ("country chart : " + str(uid))
     if (country := await request.app.mongodb["countries"].find_one({"country_uid":uid})) is not None:
+        print(country)
         return CountryDB(**country)
     raise HTTPException (status_code=404, detail=f"Country with uid {uid} not found.")    
 
