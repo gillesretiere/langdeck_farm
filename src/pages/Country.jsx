@@ -4,6 +4,7 @@ import {useState, useEffect} from 'react'
 import Layout from "../components/Layout"
 import Loading from "../components/Loading"
 import CountryMapComponent from "../components/CountryMapComponent"
+import CountryCardMini from "../components/CountryCardMini"
 
 let BASE_URL = "http://141.94.204.108:8000/countries"
 
@@ -26,9 +27,11 @@ const Country = () => {
 
   return (
     <Layout>
-    <div id="country-map-component">
-      <h1>{country.country_name_fr}</h1>
-      <div><CountryMapComponent country={country}></CountryMapComponent></div>
+    <div>
+      <div>
+        {/*<div className="country-map-card"><CountryCardMini country={country}></CountryCardMini></div>*/}
+        <div><CountryMapComponent country={country}></CountryMapComponent></div>
+      </div>
     </div>
     </Layout>
   )

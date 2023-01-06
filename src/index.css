@@ -287,21 +287,41 @@ body {
     background: #FA7F08;
   }
 
-  #country-map-component {
-    padding: 20px;
-    margin:20px;
+  .country-map-container {
+    display:flex;
+    flex-direction: row;
+    min-height: 60vh;
+    justify-content:left;
   }
 
-  #country-map-component h1 {
-    color:#88ac9b;
-    font-family: neue-haas-grotesk-display,sans-serif;
-    font-weight: 600;
-    font-style: bold;
-    font-size: 2em;
-    letter-spacing:-1px;
+  .map-container {
+    display:flex;
+  }
+
+  .map-filler {
+    display: flex;
+    flex: 0 0 500px;
+  }
+
+  .country-map-card {
+    margin: 10px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    width:100%;
+  }
+  
+  .country-map-map {
+    display: flex;
+    flex:1;
+    margin: 10px;
+    padding: 1.5rem;
+    background-color: #DCEEF2;
+    border-radius: 10px;
+    overflow:hidden;
+    min-width: 500px;
   }
 
   div[id^='chartdiv']{
-    width: 100%;
-    height: 500px;
+    width: auto;
+    height: 700px;
   }

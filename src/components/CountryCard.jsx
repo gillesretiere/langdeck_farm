@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom"
 import ChartCountryLanguages from "../components/ChartCountryLanguages"
-import CountryMapChart from "../components/CountryMapChart"
 
 /*https://shaquillegalimba.medium.com/how-to-import-multiple-images-in-react-1936efeeae7b*/
 require.context('../assets/images', false, /\.(png|jpe?g|svg)$/)
