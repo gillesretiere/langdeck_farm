@@ -71,6 +71,17 @@ async def list_country_by_id (request: Request, uid: str):
         return CountryDB(**country)
     raise HTTPException (status_code=404, detail=f"Country with uid {uid} not found.")    
 
+
+#--- list one country by alpha2
+@router.get("/alpha2/{alpha2}", response_description="country by alpha2")
+async def list_country_by_alpha2 (request: Request, alpha2: str):
+    print ("country chart : " + str(alpha2))
+    if (country := await request.app.mongodb["countries"].find_one({"country_iso2":alpha2})) is not None:
+        print(country)
+        return CountryDB(**country)
+    raise HTTPException (status_code=404, detail=f"Country with uid {alpha2} not found.")    
+
+
 #--- update one country by uid
 @router.patch("/{uid}", response_description="Update country by uid")
 async def update_country_by_id(uid: str, request: Request, country: CountryUpdate = Body(...)):

@@ -7,3 +7,4 @@ src/components/ChartCountryLanguages.jsx
 backend/.env
 backend/routers/__pycache__/countries.cpython-39.pyc
 backend/routers/countries.py
+backend/routers/__pycache__/countries.cpython-39.pyc
