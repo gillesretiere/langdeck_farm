@@ -67,7 +67,6 @@ async def list_countries(request:Request, country_uid: Optional[str]=None)-> Lis
 async def list_country_by_id (request: Request, uid: str):
     print ("country chart : " + str(uid))
     if (country := await request.app.mongodb["countries"].find_one({"country_uid":uid})) is not None:
-        print(country)
         return CountryDB(**country)
     raise HTTPException (status_code=404, detail=f"Country with uid {uid} not found.")    
 
@@ -77,7 +76,6 @@ async def list_country_by_id (request: Request, uid: str):
 async def list_country_by_alpha2 (request: Request, alpha2: str):
     print ("country chart : " + str(alpha2))
     if (country := await request.app.mongodb["countries"].find_one({"country_iso2":alpha2})) is not None:
-        print(country)
         return CountryDB(**country)
     raise HTTPException (status_code=404, detail=f"Country with uid {alpha2} not found.")    
 
