@@ -18,18 +18,18 @@ const CountryCardMini = ({country}) => {
     // <Link to={`/languages/country/${country_uid}`}>
     
     <div className="shadow-lg p-5 flex flex-col bg-FarmWhite rounded-lg">
-        <div className="text-center h-24 c-card">{country_name_fr}</div>
+        <div id="country-name-fr" className="text-center h-24 c-card">{country_name_fr}</div>
           <div className="card-wrapper">
             <div className="card-wrapper-row">
               <div className="card-wrapper-column-left">
-                <div className="c-card-img card-wrapper-country-flag flag"><img src={country_national_flag}></img></div>
+                <div className="c-card-img card-wrapper-country-flag flag"><img id="country-flag" src={country_national_flag}></img></div>
                   <div className="wrtx text-base">
                     <div className="text-xs">Country (en):</div>
-                    <div className="font-bold">{country_name_en}</div>
+                    <div id="country-name-en" className="font-bold">{country_name_en}</div>
                     <div className="text-xs">Country (native):</div>
-                    <div className="font-bold">{country_name_native}</div>
+                    <div id="country-name-native" className="font-bold">{country_name_native}</div>
                     <div className="text-xs">Alpha-2:</div>
-                    <div className="font-bold">{country_iso2}</div>                                        
+                    <div id="country-name-iso" className="font-bold">{country_iso2}</div>                                        
                   </div>
               </div>
             </div>
