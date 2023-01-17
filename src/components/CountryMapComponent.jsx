@@ -4,9 +4,19 @@ import * as am5map from "@amcharts/amcharts5/map";
 import * as am5plugins_exporting from "@amcharts/amcharts5/plugins/exporting";
 import am5geodata_worldLow from "@amcharts/amcharts5-geodata/worldLow";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
-import CountryCardMini from "../components/CountryCardMini"
+import ChartCountryLanguages from "../components/ChartCountryLanguages"
 
+function doSomething({json}) {
+  let s = "";
+    {json.country_languages && json.country_languages.sort((a, b) => a.popularity_as_float > b.popularity_as_float?-1:1).map(
+      (el)=>{
+        s += `<ChartCountryLanguages key=${el.language_uid} language = ${el} />`
+      }
+    )}      
+  console.log(s);
 
+  return s;
+}
 
 class CountryMapComponent extends Component {
 
@@ -18,32 +28,29 @@ class CountryMapComponent extends Component {
 
         this.dataContextId = React.createRef();
         this.delta = this.delta.bind(this);
+        
       }
 
-
-    delta = () => {
+    delta = (country) => {
       this.setState({
         country: this.state.country
       });
       console.log("delta");
     }
 
-    handleClick = (id) => {
-        console.log('Click happened');
-        let BASE_URL = "http://141.94.204.108:8000/countries"
-        fetch(`${BASE_URL}/${id}`)
-        .then(response=>response.json())
-        .then(json=>{
-            console.log("handleClick : "+json);
-        }) 
+    handleClick = (m) => {
+      console.log(m);
+      // this.setState((state, props) => ({ country: props.country }))
     };
 
     componentDidMount() {
       // ... chart code goes here ...
-
+      
       let root = am5.Root.new(`chartdiv${this.props.country.country_iso2}`);
-      console.log(this.dataContextId);
+      let params = this.props;
 
+      console.log(this.dataContextId);
+      // this.props.parentFunction(this.props.country);
       root.setThemes([
         am5themes_Animated.new(root)
       ]);
@@ -78,6 +85,8 @@ class CountryMapComponent extends Component {
         }, 
         ]); 
         console.log(ev.target.dataItem._settings.id)
+        console.log(root);
+        console.log(params);
         let BASE_URL = "http://141.94.204.108:8000/countries/alpha2";
         fetch(`${BASE_URL}/${ev.target.dataItem._settings.id}`)
         .then(response=>response.json())
@@ -91,23 +100,31 @@ class CountryMapComponent extends Component {
             el_cnnt.textContent = json.country_name_native;   
             let el_cnen = document.getElementById("country-name-en");
             el_cnen.textContent = json.country_name_en;      
+            // el_cnen.dispatchEvent(new Event('click'));
             let el_cniso = document.getElementById("country-name-iso");
             el_cniso.textContent = json.country_iso2;                                       
             let el_flag = document.getElementById("country-flag");
             el_flag.src = json.country_national_flag;
+            //document.getElementById("country-languages-list").innerHTML = JSON.stringify(json.country_languages);
+            //document.getElementById("country-languages-list").innerHTML = doSomething({json});
+            params.setUpdatedCountry(json.country_uid);
             // currentComponent.setState({ country: json });
         }) 
         console.log(chart.series._values[0]._dataItems[0].dataContext.id);
       });
+      
       this.polygonSeries = polygonSeries;
       this.chart = chart;
       this.root = root;
+      
     }
   
     componentDidUpdate(oldProps) {
         console.log("OldProps : " + oldProps.country.country_iso2);
         console.log("Props : " + this.props.country.country_iso2);
-        console.log("polygonSeries : " + this.polygonSeries.data);
+        // console.log("polygonSeries : " + this.polygonSeries.data);
+        
+        // this.props.parentFunction(this.props.country);  
         if (oldProps.country.country_iso2 !== this.props.country.country_iso2) {
             this.polygonSeries.data.setAll([{
                 id: this.props.country.country_iso2,
@@ -116,9 +133,10 @@ class CountryMapComponent extends Component {
                 }
               }, 
               ]);   
-                          
+              // this.props.setUpdatedCountry(this.props.country.country_uid);
+              // this.props.parentFunction(this.props.country);        
         }
-        
+        // this.props.setUpdatedCountry(this.props.country);
       }
 
     componentWillUnmount() {
@@ -129,11 +147,11 @@ class CountryMapComponent extends Component {
   
     render() {
       return (
-        <div className="map-container">
-        <div className="country-map-map" id={`chartdiv${this.props.country.country_iso2}`}> </div>
-          <div className="map-filler">
-            <div className="country-map-card"><CountryCardMini country={this.props.country}></CountryCardMini></div>
-          </div>
+        <div className="map-container" onClick={this.handleClick("message2")}>
+        <div className="country-map-map" id={`chartdiv${this.props.country.country_iso2}`} onClick={this.handleClick("message")}> </div>
+          {/* <div className="map-filler">
+           <div className="country-map-card"><CountryCardMini country={this.props.country}></CountryCardMini></div>
+          </div>*/}
         </div>
       );
 
