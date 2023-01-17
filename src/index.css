@@ -248,10 +248,6 @@ body {
     max-width:100%; height:auto;
   }
 
-.container{
-    background-color: #f4faf2;
-}
-
 .item {
     border-top: 1px solid #6DBF1B;
     margin-bottom: 15px;
@@ -323,5 +319,5 @@ body {
 
   div[id^='chartdiv']{
     width: auto;
-    height: 700px;
+    height: 400px;
   }

@@ -23,7 +23,7 @@ class CountryMapComponent extends Component {
       let chart = root.container.children.push(am5map.MapChart.new(root, {
         panX: "translateX",
         projection: am5map.geoMercator(),
-        padding: "10px",
+        padding: "10px"
       }));
 
       let polygonSeries = chart.series.push(
@@ -41,14 +41,6 @@ class CountryMapComponent extends Component {
       });
 
       polygonSeries.mapPolygons.template.events.on("click", function(ev) {
-        polygonSeries.zoomToDataItem(ev.target.dataItem);
-        polygonSeries.data.setAll([{
-          id: ev.target.dataItem._settings.id,
-          polygonSettings: {
-            fill: am5.color(0xF23D3D)
-          }
-        }, 
-        ]); 
         setUpdatedCountry(ev.target.dataItem._settings.id);
       });
       
@@ -78,9 +70,7 @@ class CountryMapComponent extends Component {
   
     render() {
       return (
-        <div className="map-container">
-        <div className="country-map-map" id={`chartdiv${this.props.country.country_iso2}`}> </div>
-        </div>
+        <div id={`chartdiv${this.props.country.country_iso2}`}> </div>
       );
 
     }
