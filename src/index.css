@@ -321,3 +321,8 @@ body {
     width: auto;
     height: 400px;
   }
+  
+  div[id^='mapdiv']{
+    width: auto;
+    height: 400px;
+  }
