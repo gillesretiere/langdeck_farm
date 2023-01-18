@@ -8,7 +8,7 @@ const LanguageCard = ({language}) => {
 
     return (
     // <Link to={`/languages/${language_uid}`}>
-    <Link to={`/countries/language/${language_uid}`}>
+    <Link to={`/languages/${language_uid}`}>
     <div className="shadow-lg p-5 flex flex-col bg-FarmWhite rounded-lg transition ease-in-out hover:scale-105 duration-300 card">
       <div className="text-center h-24 l-card">{language_name_fr}</div>
         <div className="card-wrapper">
@@ -32,6 +32,7 @@ const LanguageCard = ({language}) => {
 
             </div>            
           </div>
+          <Link to={`/countries/language/${language_uid}`}>
           <div className="container grid grid-cols-5 auto-rows-3fr bg-light-green">
                   {language_countries && language_countries.sort((a, b) => a.popularity_as_float > b.popularity_as_float?-1:1).map(
                     (el)=>{
@@ -41,6 +42,7 @@ const LanguageCard = ({language}) => {
                     }
                   )}      
           </div>
+          </Link>
         </div>
     </div>
     </Link>
