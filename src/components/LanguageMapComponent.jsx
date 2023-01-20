@@ -113,6 +113,7 @@ class LanguageMapComponent extends Component {
             })
           );
 
+          /*
           pointSeries.bullets.push(() => {
             return am5.Bullet.new(this.root, {
               sprite: am5.Circle.new(this.root, {
@@ -122,6 +123,61 @@ class LanguageMapComponent extends Component {
               })
             });
           });
+*/
+          let colorset = am5.ColorSet.new(this.root, {});
+
+          pointSeries.bullets.push(() =>{
+            var container = am5.Container.new(this.root, {});
+
+            var circle = container.children.push(
+              am5.Circle.new(this.root, {
+                radius: 4,
+                tooltipY: 0,
+                fill: am5.color(0xF23545),
+                strokeOpacity: 0,
+                tooltipText: "{name}"
+              })
+            );
+
+            var circle2 = container.children.push(
+              am5.Circle.new(this.root, {
+                radius: 4,
+                tooltipY: 0,
+                fill: am5.color(0xF23545),
+                strokeOpacity: 0,
+                tooltipText: "{name}"
+              })
+            );
+
+            circle.animate({
+              key: "scale",
+              from: 1,
+              to: 5,
+              duration: 600,
+              easing: am5.ease.out(am5.ease.cubic),
+              loops: Infinity
+            });
+            circle.animate({
+              key: "opacity",
+              from: 1,
+              to: 0,
+              duration: 600,
+              easing: am5.ease.out(am5.ease.cubic),
+              loops: Infinity
+            });
+
+            return am5.Bullet.new(this.root, {
+              sprite: container
+            });
+          });
+
+          pointSeries.data.setAll({
+            tooltipText: "{name}",
+            title: "{name}"
+          });
+
+
+
           console.log(pointSeries.bullets);
    /*       
 function animateBullet(circle) {
