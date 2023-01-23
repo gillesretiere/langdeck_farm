@@ -17,55 +17,30 @@ const CountryCard = ({country}) => {
     return (
     // <Link to={`/languages/country/${country_uid}`}>
     
-    <div className="shadow-lg p-5 flex flex-col bg-FarmWhite rounded-lg transition ease-in-out hover:scale-105 duration-300 card">
+    <div className="shadow-lg p-1 flex flex-col bg-FarmWhite card">
         <div className="text-center h-24 c-card">{country_name_fr}</div>
-          <div className="card-wrapper">
-            <div className="card-wrapper-row">
-              <div className="card-wrapper-column-left">
-                <div className="c-card-img card-wrapper-country-flag flag"><img src={country_national_flag}></img></div>
-                  <div className="wrtx text-base">
-                    <div className="text-xs">Country (en):</div>
-                    <div className="font-bold">{country_name_en}</div>
-                    <div className="text-xs">Country (native):</div>
-                    <div className="font-bold">{country_name_native}</div>
-                    <div className="text-xs">Alpha-2:</div>
-                    <div className="font-bold">{country_iso2}</div>                                        
-                  </div>
-              </div>
-            
-              <div className="card-wrapper-column-right bg-light-green">{country_uid}
-
-                
-                <Link to={`/countries/${country_uid}`}>
-                <div className="card-wrapper-country-mappos">
-                  <div className="c-card-img card-wrapper-country-mappos-world">
-                    
-                    {/*<img src="https://res.cloudinary.com/dhc7ovnwk/image/upload/v1671982019/81928-and-map-globe-black-world-white-1240_o3i84d.png" className="huerotate"></img>*/}
-                  </div>
-                  <div className="c-card-img card-wrapper-country-mappos-region">
-                    <img src={AllImages[`${region_uid+".png"}`]} className="huerotate"></img>
-                  </div>                               
-                </div>   
-                </Link>               
-              </div>                
-            </div>
-
-            <Link to={`/languages/country/${country_uid}`}>
-            <div className="flex flex-col card-wrapper-row">  
-              <div className="card-wrapper-column-left">
-              
-                  {country_languages && country_languages.sort((a, b) => a.popularity_as_float > b.popularity_as_float?-1:1).map(
-                    (el)=>{
-                      return (                  
-                        <ChartCountryLanguages key={el.language_uid} language = {el} />                                 
-                    )
-                    }
-                  )}    
-          
-              </div>
-            </div>
-            </Link>  
+        <div className="container w-full h-screen flex-1 flex-col md:flex-row">  
+          <div className="split basis-1/2 pr-2">
+            <Link to={`/countries/${country_uid}`}>
+              <div className="c-card-img card-wrapper-country-flag flag pt-1"><img src={country_national_flag}></img></div>
+            </Link>              
+          </div>        
+          <div className="split basis-1/2 pl-2">
+            <div className="card-h1">{country_name_en}</div>
+            <div className="card-h2">{country_name_native}</div>
+            <hr/>
+            <div className="card-label">Code Alpha-2</div>
+            <div className="card-h3">{country_iso2}</div>
+            <hr/>
+            <div className="card-label">Code Alpha-3</div>
+            <div className="card-h3">{country_uid}</div>   
+            <hr/>
+          </div>
         </div>
+        <div className="w-full h-screen flex-1 flex-col md:flex-row">
+          <hr/>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempus iaculis urna id volutpat lacus laoreet non curabitur. Duis at consectetur lorem donec. Posuere ac ut consequat semper viverra nam libero. Dui id ornare arcu odio ut sem nulla. Mauris commodo quis imperdiet massa tincidunt nunc. Consectetur purus ut faucibus pulvinar elementum integer enim neque volutpat. Id nibh tortor id aliquet lectus proin. Enim nec dui nunc mattis enim ut tellus elementum. Imperdiet proin fermentum leo vel orci porta non pulvinar. Urna condimentum mattis pellentesque id nibh tortor id. Justo nec ultrices dui sapien eget mi proin sed. Condimentum vitae sapien pellentesque habitant morbi tristique. Id velit ut tortor pretium viverra suspendisse potenti nullam. Dignissim convallis aenean et tortor at risus viverra adipiscing at. Mi quis hendrerit dolor magna eget est lorem. Faucibus nisl tincidunt eget nullam non nisi est sit amet. Hendrerit dolor magna eget est. Sit amet tellus cras adipiscing.</p>    
+        </div>  
     </div>
 
   )
