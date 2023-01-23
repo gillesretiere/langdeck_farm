@@ -2,7 +2,13 @@ import React,{Component} from 'react'
 import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
 import am5geodata_worldLow from "@amcharts/amcharts5-geodata/worldLow";
+import am5geodata_usaLow from "@amcharts/amcharts5-geodata/usaLow";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
+
+
+function findCommonElements3(arr1, arr2) {
+  return arr1.some(item => arr2.includes(item))
+}
 
 function geoJson (countries) {
   // code here    
@@ -16,7 +22,8 @@ function geoJson (countries) {
       let doc = {
                   "type": "Feature",
                   "properties": {
-                  "name": `${countries[i]["country_name_fr"]}`
+                  "name": `${countries[i]["country_name_fr"]}`,
+                  "country_iso2" : `${countries[i]["country_iso2"]}`
                   },
                   "geometry": {
                   "type": "Point",
@@ -49,6 +56,8 @@ class LanguageMapComponent extends Component {
         let root = am5.Root.new(`mapdiv${this.props.language.language_uid}`);
         console.log("mounted");
 
+        let colorset = am5.ColorSet.new(root, {});
+
         this.setState({country_points: {}}, function () {
           console.log(this.state.country_points);
          });
@@ -68,30 +77,51 @@ class LanguageMapComponent extends Component {
         let polygonSeries = chart.series.push(
             am5map.MapPolygonSeries.new(root, {
               geoJSON: am5geodata_worldLow,
-              fill: am5.color(0xdddddd),
-              fillOpacity: 0.1,
+              fill: am5.color(0xBFBFB8),
+              fillOpacity: 0.9,
               stroke: am5.color(0xffffff),
               exclude: ["AQ"]
             })
           );
-        
+    
         polygonSeries.mapPolygons.template.states.create("hover",
             {
-            fill: am5.color(0x297373),
-            stroke: am5.color(0x297373)
+            fill: am5.color(0xA4A69C),
+            stroke: am5.color(0xA4A69C)
             });
+
+        polygonSeries.mapPolygons.template.states.create("active", {
+            fill: root.interfaceColors.get("primaryButtonHover")
+        });
 
         polygonSeries.mapPolygons.template.setAll({
             tooltipText: "{name}",
             templateField: "polygonSettings",
+            toggleKey: "active",
+            interactive: true            
         });
+
+
+
+        // Add zoom control
+        // https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
+        chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
+
+        // Set clicking on "water" to zoom out
+        chart.chartContainer.get("background").events.on("click", function () {
+            chart.goHome();
+        })
 
         this.chart = chart;
         this.polygonSeries = polygonSeries;
+        //this.polygonSeriesUS = polygonSeriesUS;
         this.root = root;
     }
   
     componentDidUpdate(oldProps) {
+
+        let colorset = am5.ColorSet.new(this.root, {});
+        let colorIndex = 10;
 
         if (oldProps.language.language_uid !== this.props.language.language_uid) {
           let country_points = geoJson(this.props.language.language_countries);
@@ -113,18 +143,28 @@ class LanguageMapComponent extends Component {
             })
           );
 
-          /*
-          pointSeries.bullets.push(() => {
-            return am5.Bullet.new(this.root, {
-              sprite: am5.Circle.new(this.root, {
-                radius: 6,
-                fill: am5.color(0xFA7F08),
-                fillOpacity: 0.5,
-              })
-            });
+          console.log(country_points)
+
+          let vk_sel = country_points.features.map(a => a.properties.country_iso2)
+          let vk_world = am5geodata_worldLow.features.map(a => a.properties.id)
+          let vk_diff = vk_world.filter(x => !vk_sel.includes(x));
+    
+          let polygonSeriesUS = this.chart.series.push(am5map.MapPolygonSeries.new(this.root, {
+            geoJSON: am5geodata_worldLow,
+            fill: colorset.getIndex(14),
+            opacity :0.5,
+            fillOpacity: 0.5,
+            exclude : vk_diff
+          }));
+    
+    
+          polygonSeriesUS.mapPolygons.template.states.create("hover", {
+              fill: this.root.interfaceColors.get("primaryButtonHover")
           });
-*/
-          let colorset = am5.ColorSet.new(this.root, {});
+    
+          polygonSeriesUS.mapPolygons.template.states.create("active", {
+              fill: this.root.interfaceColors.get("primaryButtonHover")
+          });    
 
           pointSeries.bullets.push(() =>{
             var container = am5.Container.new(this.root, {});
@@ -133,8 +173,9 @@ class LanguageMapComponent extends Component {
               am5.Circle.new(this.root, {
                 radius: 4,
                 tooltipY: 0,
-                fill: am5.color(0xF23545),
+                fill: colorset.getIndex(colorIndex),
                 strokeOpacity: 0,
+                fillOpacity: 0.8,
                 tooltipText: "{name}"
               })
             );
@@ -143,8 +184,9 @@ class LanguageMapComponent extends Component {
               am5.Circle.new(this.root, {
                 radius: 4,
                 tooltipY: 0,
-                fill: am5.color(0xF23545),
+                fill: colorset.getIndex(colorIndex),
                 strokeOpacity: 0,
+                fillOpacity: 0.8,
                 tooltipText: "{name}"
               })
             );
@@ -170,30 +212,9 @@ class LanguageMapComponent extends Component {
               sprite: container
             });
           });
+   
 
-          pointSeries.data.setAll({
-            tooltipText: "{name}",
-            title: "{name}"
-          });
-
-
-
-          console.log(pointSeries.bullets);
-   /*       
-function animateBullet(circle) {
-  var animation = circle.animate([{ property: "scale", from: 1, to: 5 }, { property: "opacity", from: 1, to: 0 }], 1000, am4core.ease.circleOut);
-  animation.events.on("animationended", function(event){
-    animateBullet(event.target.object);
-  })
-}
-*/
-    pointSeries.animate({
-            key: "startAngle",
-            to: 180,
-            loops: Infinity,
-            duration: 2000,
-            easing: am5.ease.yoyo(am5.ease.cubic)
-          });          
+      //this.chart.appear(1000, 100);
       } // endif
         
     }
