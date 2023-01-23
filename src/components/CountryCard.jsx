@@ -51,7 +51,7 @@ const CountryCard = ({country}) => {
             </div>
 
             <Link to={`/languages/country/${country_uid}`}>
-            <div className="card-wrapper-row">  
+            <div className="flex flex-col card-wrapper-row">  
               <div className="card-wrapper-column-left">
               
                   {country_languages && country_languages.sort((a, b) => a.popularity_as_float > b.popularity_as_float?-1:1).map(

@@ -37,7 +37,7 @@ const Regions = () => {
     <Layout>
         <div className="mx-8">                
             {isPending && <Loading regionName={regionName} />}             
-                <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+                <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
                     {regions && regions.map(
                     (el)=>{
                         return (                               
