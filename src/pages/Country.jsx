@@ -40,12 +40,10 @@ const Country = () => {
 
   return (
     <Layout>
-    <div>
       <div className="container w-full h-screen flex flex-col md:flex-row">
-        <div className="basis-2/3 m-8"><CountryMapComponent country={country} setUpdatedCountry={setUpdatedCountry}></CountryMapComponent></div>
-        <div className="basis-1/3 m-8"><CountryCardSummary country={country} setUpdatedCountry={setUpdatedCountry}></CountryCardSummary></div>
+        <div className="basis-3/4 m-8"><CountryMapComponent country={country} setUpdatedCountry={setUpdatedCountry}></CountryMapComponent></div>
+        <div className="basis-1/4 m-8"><CountryCardSummary country={country} setUpdatedCountry={setUpdatedCountry}></CountryCardSummary></div>
       </div>
-    </div>
     </Layout>
   )
 }
