@@ -1,22 +1,18 @@
 import React from 'react'
+import RatioCircleComponent from "../components/RatioCircleComponent"
 
 const ChartCountryLanguages = ({language}) => {
 
     let {language_name_fr, popularity, popularity_as_float} = language
 
     return (
-        <div className="chart-wrapper"> 
-            <div className="language-chart">
-                <div className="language-chart-item-1">{language_name_fr}</div>
-                <div className="language-chart-item-2">
-                    <div className="circle centered-circle-ctry" style={popularity_as_float>0 ? 
-                        {width: `${popularity_as_float*100}%`, height: `${popularity_as_float*100}%`} : 
-                        {width: `5%`, height: `5%`} }>&nbsp;
-                    </div>                    
+            <div className="container w-full h-screen flex-1 flex-col md:flex-row mb-1 p-1">
+                <div className="basis-1/3 language-chart">{language_name_fr}</div>
+                <div className="language-chart basis-1/3">
+                    <RatioCircleComponent popularity_as_float={popularity_as_float}></RatioCircleComponent>               
                 </div>
-                {popularity_as_float>0 ? <div className="language-chart-item-3">{popularity}</div> : <div className="language-chart-item-3">?</div> }
+                {popularity_as_float>0 ? <div className="language-chart basis-1/3">{popularity}</div> : <div className="language-chart basis-1/3">?</div> }
             </div>
-        </div>        
     )
 }
 

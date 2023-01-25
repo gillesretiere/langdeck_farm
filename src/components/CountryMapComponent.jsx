@@ -29,21 +29,36 @@ class CountryMapComponent extends Component {
       let polygonSeries = chart.series.push(
         am5map.MapPolygonSeries.new(root, {
           geoJSON: am5geodata_worldLow,
-          fill: am5.color(0x20732D),
-          stroke: am5.color(0xffffff),
+          fill: am5.color(0x4C5958),
+          fillOpacity: 0.9,
+          stroke: am5.color(0xBFBFBF),
           exclude: ["AQ"]
         })
       );
+      
+      chart.chartContainer.set("background", am5.Rectangle.new(root, {
+        fill: am5.color(0x015958),
+        fillOpacity: 0.1
+      }));
 
       polygonSeries.mapPolygons.template.setAll({
         tooltipText: "{name}",
-        templateField: "polygonSettings"
+        templateField: "polygonSettings",
       });
 
       polygonSeries.mapPolygons.template.events.on("click", function(ev) {
         setUpdatedCountry(ev.target.dataItem._settings.id);
       });
-      
+
+      // Add zoom control
+      // https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
+      chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
+
+      // Set clicking on "water" to zoom out
+      chart.chartContainer.get("background").events.on("click", function () {
+          chart.goHome();
+      })
+
       this.polygonSeries = polygonSeries;
       this.chart = chart;
       this.root = root;

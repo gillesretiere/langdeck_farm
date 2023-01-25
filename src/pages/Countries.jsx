@@ -2,6 +2,7 @@ import React from 'react'
 import {useState, useEffect} from 'react'
 import Layout from "../components/Layout"
 import CountryCard from "../components/CountryCard"
+import CountryCardHeader from "../components/CountryCardHeader"
 import Loading from "../components/Loading"
 
 let BASE_URL = "http://141.94.204.108:8000/countries"
