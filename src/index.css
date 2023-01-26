@@ -237,7 +237,7 @@ p {
     font-style: normal;
     font-size: 1em; 
     letter-spacing: 0.5px;    
-    @apply p-1;
+    @apply p-1 border-y border-orange-200;
   }
 }
 

@@ -77,25 +77,25 @@ class LanguageMapComponent extends Component {
         let polygonSeries = chart.series.push(
             am5map.MapPolygonSeries.new(root, {
               geoJSON: am5geodata_worldLow,
-              fill: am5.color(0xBFBFB8),
+              fill: am5.color(0x637371), //0xBFBFB8
               fillOpacity: 0.9,
-              stroke: am5.color(0xffffff),
+              stroke: am5.color(0x888888),
               exclude: ["AQ"]
             })
           );
-    
+    /*
         polygonSeries.mapPolygons.template.states.create("hover",
             {
-            fill: am5.color(0xA4A69C),
-            stroke: am5.color(0xA4A69C)
+            fill: am5.color(0xBFBFB8),
+            stroke: am5.color(0x888888)
             });
 
         polygonSeries.mapPolygons.template.states.create("active", {
             fill: root.interfaceColors.get("primaryButtonHover")
         });
-
+*/
         polygonSeries.mapPolygons.template.setAll({
-            tooltipText: "{name}",
+            // tooltipText: "{name}",
             templateField: "polygonSettings",
             toggleKey: "active",
             interactive: true            
@@ -121,14 +121,17 @@ class LanguageMapComponent extends Component {
     componentDidUpdate(oldProps) {
 
         let colorset = am5.ColorSet.new(this.root, {});
-        let colorIndex = 10;
+        let colorMap = am5.color(0x8AA6A3)
+        let colorIndexPolygon = am5.color(0xD9D3C1);
+        let colorIndexCircle = colorset.getIndex(12);
+        let colorIndexPulse = colorset.getIndex(12);
 
         if (oldProps.language.language_uid !== this.props.language.language_uid) {
           let country_points = geoJson(this.props.language.language_countries);
           this.polygonSeries.data.setAll([{
             id: this.props.language.language_uid,
             polygonSettings: {
-              fill: am5.color(0xF23D3D),
+              fill: colorMap,
             }
           }, 
           ]);   
@@ -151,8 +154,8 @@ class LanguageMapComponent extends Component {
     
           let polygonSeriesUS = this.chart.series.push(am5map.MapPolygonSeries.new(this.root, {
             geoJSON: am5geodata_worldLow,
-            fill: colorset.getIndex(14),
-            opacity :0.5,
+            fill: colorIndexPolygon,
+            opacity :0.8,
             fillOpacity: 0.5,
             exclude : vk_diff
           }));
@@ -173,7 +176,7 @@ class LanguageMapComponent extends Component {
               am5.Circle.new(this.root, {
                 radius: 4,
                 tooltipY: 0,
-                fill: colorset.getIndex(colorIndex),
+                fill: colorIndexCircle,
                 strokeOpacity: 0,
                 fillOpacity: 0.8,
                 tooltipText: "{name}"
@@ -184,10 +187,10 @@ class LanguageMapComponent extends Component {
               am5.Circle.new(this.root, {
                 radius: 4,
                 tooltipY: 0,
-                fill: colorset.getIndex(colorIndex),
+                fill: colorIndexPulse,
                 strokeOpacity: 0,
                 fillOpacity: 0.8,
-                tooltipText: "{name}"
+                // tooltipText: "{name}"
               })
             );
 
@@ -229,7 +232,9 @@ class LanguageMapComponent extends Component {
   
     render() {
       return (
-        <div id={`mapdiv${this.props.language.language_uid}`}></div>
+        <div className="shadow-lg border p-7">
+          <div id={`mapdiv${this.props.language.language_uid}`}></div>
+        </div>        
       );
 
     }
