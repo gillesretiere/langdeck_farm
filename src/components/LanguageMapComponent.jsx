@@ -74,10 +74,16 @@ class LanguageMapComponent extends Component {
             padding: "10px"
         }));
 
+        chart.chartContainer.set("background", am5.Rectangle.new(root, {
+          fill: am5.color(0x253C59),
+          fillOpacity: 0.8
+        }));
+  
+
         let polygonSeries = chart.series.push(
             am5map.MapPolygonSeries.new(root, {
               geoJSON: am5geodata_worldLow,
-              fill: am5.color(0x637371), //0xBFBFB8
+              fill: am5.color(0x99B4BF), //0xBFBFB8
               fillOpacity: 0.9,
               stroke: am5.color(0x888888),
               exclude: ["AQ"]
@@ -121,10 +127,10 @@ class LanguageMapComponent extends Component {
     componentDidUpdate(oldProps) {
 
         let colorset = am5.ColorSet.new(this.root, {});
-        let colorMap = am5.color(0x8AA6A3)
-        let colorIndexPolygon = am5.color(0xD9D3C1);
-        let colorIndexCircle = colorset.getIndex(12);
-        let colorIndexPulse = colorset.getIndex(12);
+        let colorMap = am5.color(0x99B4BF);
+        let colorIndexPolygon = am5.color(0xF2E0C9);
+        let colorIndexCircle = colorset.getIndex(11);
+        let colorIndexPulse = colorset.getIndex(9);
 
         if (oldProps.language.language_uid !== this.props.language.language_uid) {
           let country_points = geoJson(this.props.language.language_countries);
@@ -155,8 +161,9 @@ class LanguageMapComponent extends Component {
           let polygonSeriesUS = this.chart.series.push(am5map.MapPolygonSeries.new(this.root, {
             geoJSON: am5geodata_worldLow,
             fill: colorIndexPolygon,
-            opacity :0.8,
-            fillOpacity: 0.5,
+            opacity : 0.7,
+            strokeOpacity: 0.5,
+            fillOpacity: 0.2,
             exclude : vk_diff
           }));
     
@@ -177,8 +184,8 @@ class LanguageMapComponent extends Component {
                 radius: 4,
                 tooltipY: 0,
                 fill: colorIndexCircle,
-                strokeOpacity: 0,
-                fillOpacity: 0.8,
+                opacity: 1.0,
+                above:true,
                 tooltipText: "{name}"
               })
             );
@@ -188,8 +195,8 @@ class LanguageMapComponent extends Component {
                 radius: 4,
                 tooltipY: 0,
                 fill: colorIndexPulse,
-                strokeOpacity: 0,
-                fillOpacity: 0.8,
+                opacity: 1.0,
+                above:true,
                 // tooltipText: "{name}"
               })
             );
@@ -232,7 +239,7 @@ class LanguageMapComponent extends Component {
   
     render() {
       return (
-        <div className="shadow-lg border p-7">
+        <div className="shadow-lg border p-7 bg-slate-500">
           <div id={`mapdiv${this.props.language.language_uid}`}></div>
         </div>        
       );

@@ -15,6 +15,7 @@ class CountryMapComponent extends Component {
       
       let root = am5.Root.new(`chartdiv${this.props.country.country_iso2}`);
       let setUpdatedCountry = this.props.setUpdatedCountry;
+      let colorMap = am5.color(0x99B4BF);
 
       root.setThemes([
         am5themes_Animated.new(root)
@@ -29,19 +30,19 @@ class CountryMapComponent extends Component {
       let polygonSeries = chart.series.push(
         am5map.MapPolygonSeries.new(root, {
           geoJSON: am5geodata_worldLow,
-          fill: am5.color(0x2F3D40),
+          fill: colorMap,
+          opacity: 1.0,
+          stroke: am5.color(0x888888),
           fillOpacity: 0.9,
-          stroke: am5.color(0xBFBFBF),
           exclude: ["AQ"]
         })
       );
       
-      /*
       chart.chartContainer.set("background", am5.Rectangle.new(root, {
-        fill: am5.color(0x015958),
-        fillOpacity: 0.1
+        fill: am5.color(0x253C59),
+        fillOpacity: 0.8
       }));
-      */
+
       polygonSeries.mapPolygons.template.setAll({
         tooltipText: "{name}",
         templateField: "polygonSettings",
@@ -67,11 +68,15 @@ class CountryMapComponent extends Component {
     }
   
     componentDidUpdate(oldProps) {
+
+      let colorIndexPolygon = am5.color(0xF23D3D); //0xF23D3D
+
         if (oldProps.country.country_iso2 !== this.props.country.country_iso2) {
             this.polygonSeries.data.setAll([{
                 id: this.props.country.country_iso2,
                 polygonSettings: {
-                  fill: am5.color(0xF23D3D),
+                  fill: colorIndexPolygon,
+                  fillOpacity: 1.0,
                 }
               }, 
               ]);   
@@ -86,7 +91,7 @@ class CountryMapComponent extends Component {
   
     render() {
       return (
-        <div className="shadow-lg border p-7">
+        <div className="shadow-lg border p-7 bg-slate-500">
         <div id={`chartdiv${this.props.country.country_iso2}`}> </div>
         </div>
       );
