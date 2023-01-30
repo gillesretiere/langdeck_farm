@@ -3,6 +3,7 @@ import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
 import am5geodata_worldLow from "@amcharts/amcharts5-geodata/worldLow";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
+import CountryCardHeader from "../components/CountryCardHeader"
 
 class CountryMapComponent extends Component {
 
@@ -15,7 +16,7 @@ class CountryMapComponent extends Component {
       
       let root = am5.Root.new(`chartdiv${this.props.country.country_iso2}`);
       let setUpdatedCountry = this.props.setUpdatedCountry;
-      let colorMap = am5.color(0x99B4BF);
+      let colorMap = am5.color(0x10403B);
 
       root.setThemes([
         am5themes_Animated.new(root)
@@ -37,12 +38,12 @@ class CountryMapComponent extends Component {
           exclude: ["AQ"]
         })
       );
-      
+      /*
       chart.chartContainer.set("background", am5.Rectangle.new(root, {
         fill: am5.color(0x253C59),
         fillOpacity: 0.8
       }));
-
+      */
       polygonSeries.mapPolygons.template.setAll({
         tooltipText: "{name}",
         templateField: "polygonSettings",
@@ -91,9 +92,12 @@ class CountryMapComponent extends Component {
   
     render() {
       return (
-        <div className="shadow-lg border p-7 bg-slate-500">
-        <div id={`chartdiv${this.props.country.country_iso2}`}> </div>
+        <>
+        <div className="p-2 card-header card-header-r">Map Locator : {this.props.country.country_name_fr}</div>
+        <div className="bg-black shadow-lg p-7">  
+          <div id={`chartdiv${this.props.country.country_iso2}`}> </div>
         </div>
+        </>
       );
 
     }

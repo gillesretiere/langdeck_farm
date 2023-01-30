@@ -38,7 +38,7 @@ const Countries = () => {
     <Layout>
         <div className="mx-8">                
             {isPending && <Loading countryName={countryName} />}             
-             <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+             <div>
                     {countries && countries.map(
                     (el)=>{
                         return (                               

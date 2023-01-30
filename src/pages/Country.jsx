@@ -3,7 +3,8 @@ import {useParams} from "react-router-dom"
 import {useState, useEffect} from 'react'
 import Layout from "../components/Layout"
 import CountryMapComponent from "../components/CountryMapComponent"
-import CountryCardSummary from "../components/CountryCardSummary"
+import CountryLanguagesCardHeader from "../components/CountryLanguagesCardHeader"
+import CountryCardLanguageChart from "../components/CountryCardLanguageChart"
 
 let BASE_URL = "http://141.94.204.108:8000/countries"
 
@@ -40,12 +41,12 @@ const Country = () => {
 
   return (
     <Layout>
-      <div className="container w-full h-screen flex flex-col md:flex-row">
-        <div className="basis-1/2 m-8"><CountryMapComponent country={country} setUpdatedCountry={setUpdatedCountry}></CountryMapComponent></div>
-        <div className="basis-1/4 m-8"><CountryCardSummary country={country} setUpdatedCountry={setUpdatedCountry}></CountryCardSummary></div>
-        <div className="basis-1/4 m-8"><CountryCardSummary country={country} setUpdatedCountry={setUpdatedCountry}></CountryCardSummary></div>
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-2 gap-3">
+        <div className="card-item"><CountryMapComponent country={country} setUpdatedCountry={setUpdatedCountry}></CountryMapComponent></div>
+        <div className="card-item"><CountryLanguagesCardHeader country={country} setUpdatedCountry={setUpdatedCountry}></CountryLanguagesCardHeader></div>
+        <div className="card-item"><CountryCardLanguageChart country={country} setUpdatedCountry={setUpdatedCountry}></CountryCardLanguageChart></div>
       </div>
-    </Layout>
+    </Layout>  
   )
 }
 
