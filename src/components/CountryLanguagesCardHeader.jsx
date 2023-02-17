@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from "react-router-dom"
+import CountryFactsCard from "../components/CountryFactsCard"
 
 const CountryLanguagesCardHeader = ({country}) => {
-    let {country_uid, region_uid, country_name_en, country_name_fr, country_name_native, country_iso2, country_national_flag, country_summary, country_region_fr, country_languages} = country
+    let {country_uid, region_uid, country_name_en, country_name_fr, country_name_native, country_iso2, country_national_flag, country_summary, country_region_fr, country_languages, country_facts}  = country
+    console.log(country)
     return (
         <>
             <div className="bg-white">
@@ -24,8 +26,14 @@ const CountryLanguagesCardHeader = ({country}) => {
                                 <hr/>
                                 <div className="card-label">Code Alpha-3</div>
                                 <div className="card-h3">{country_uid}</div>   
+                                <hr/>
+                                <p>&nbsp;</p>                            
                             </div>
                         </div>
+                        <div className="pl-2 card-label-xl">Facts</div>
+                        <hr/>
+                        <div className="pl-2"><CountryFactsCard country={country}></CountryFactsCard></div> 
+                        <hr/>
                     </div>  
                 </div>  
             </div>  

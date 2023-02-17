@@ -29,6 +29,11 @@ for rec in name_records:
             ctry["country_languages"] = eval(ctry["country_languages"])
         else :
             ctry["country_languages"] = []
+
+        if len(ctry["country_facts"]):
+            ctry["country_facts"] = eval(ctry["country_facts"])
+        else :
+            ctry["country_facts"] = []
         #print (ctry["country_languages"])
         print("Inserting:",ctry)
         collection.insert_one(ctry)

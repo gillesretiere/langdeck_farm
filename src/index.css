@@ -41,16 +41,21 @@
     }    
   }
   
+:root {
+    --primary-bgcolor: #8AA6A3;
+    --primary-font : neue-haas-grotesk-display,sans-serif;
+    --secondary-font : neue-haas-grotesk-text, sans-serif;
+}
 
 body {
-    font-family: neue-haas-grotesk-display,sans-serif;
+    font-family: var(--primary-font);
     font-weight: 400;
     font-style: normal;
-    background-color: #8AA6A3;
+    background-color: var(--primary-bgcolor);
 }
 
 p {
-  font-family: neue-haas-grotesk-display,sans-serif;
+  font-family: var(--primary-font);
   font-weight: 400;
   font-size: 1em;
   font-style: normal;
@@ -58,7 +63,7 @@ p {
 }
 
 .logo {
-    background-color: #8AA6A3;
+    background-color: var(--primary-bgcolor);
 }
 
 .logo img{
@@ -82,7 +87,7 @@ p {
   justify-content: left;    
   background-color: #ffffff;
   color:black;
-  font-family: neue-haas-grotesk-display,sans-serif;
+  font-family: var(--primary-font);
   font-weight: 400;
   font-style: normal;
   font-size: 1rem;
@@ -110,7 +115,7 @@ p {
     justify-content: center;    
     background-color: #43BED9;
     color:white;
-    font-family: neue-haas-grotesk-display,sans-serif;
+    font-family: var(--primary-font);
     font-weight: 600;
     font-style: normal;
     font-size: 2rem;
@@ -127,7 +132,7 @@ p {
     justify-content: center;    
     background-color: #6DBF1B;
     color:white;
-    font-family: neue-haas-grotesk-display,sans-serif;
+    font-family: var(--primary-font);
     font-weight: 600;
     font-style: normal;  
     font-size: 2em;
@@ -147,7 +152,7 @@ p {
     justify-content: center;    
     background-color: #FA7F08;
     color:white;
-    font-family: neue-haas-grotesk-display,sans-serif;
+    font-family: var(--primary-font);
     font-weight: 600;
     font-style: normal;
     font-size: 2em;
@@ -159,7 +164,7 @@ p {
     margin-top: 2px;
     padding: 1px;
     background-color: #ffffff;
-    font-family: neue-haas-grotesk-display,sans-serif;
+    font-family: var(--primary-font);
     font-weight: 400;
     font-style: normal;
     font-size: 0.875em;    
@@ -170,6 +175,13 @@ p {
   font-size: 1em;
   letter-spacing: 0px;
   color:#FA7F08;
+}
+
+.card-label-xl {
+  font-weight: 600;
+  font-size: 1.2em;
+  letter-spacing: 0px;
+  color:#888888;
 }
 
 .card-h1 {
@@ -191,8 +203,17 @@ p {
   color:#10403B;
 }
 
+.card-h4 {
+  font-family: var(--secondary-font);
+  font-weight: 400;
+  font-size: 0.8em;
+  letter-spacing: 0px;
+  color:#10403B;
+  padding: 2px 2px 2px 0px;
+}
+
 .language-chart-item-1 {
-  font-family: neue-haas-grotesk-display,sans-serif;
+  font-family: var(--primary-font);
   font-weight: 400;
   font-size: 0.8em;
   letter-spacing: 1px;
@@ -200,7 +221,7 @@ p {
 }
 
 .language-chart-item-3 {
-  font-family: neue-haas-grotesk-display,sans-serif;
+  font-family: var(--primary-font);
   font-weight: 400;
   font-size: 0.8em;
   letter-spacing: 1px;
@@ -272,15 +293,15 @@ p {
   .language-chart {
     display:flex;
     flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    background-color: #faf4ee;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: baseline;
+    /*background-color: #faf4ee;*/
     font-weight: 400;
     font-style: normal;
     font-size: 1em; 
     letter-spacing: 0.5px;    
-    @apply p-1 border-y border-orange-200;
+    @apply p-1 border-b border-gray-200;
   }
 }
 

@@ -6,7 +6,8 @@ import CountryMapComponent from "../components/CountryMapComponent"
 import CountryLanguagesCardHeader from "../components/CountryLanguagesCardHeader"
 import CountryCardLanguageChart from "../components/CountryCardLanguageChart"
 
-let BASE_URL = "http://141.94.204.108:8000/countries"
+
+
 
 const Country = () => {
   let {id} = useParams()
@@ -16,6 +17,7 @@ const Country = () => {
   const [isPending, setIsPending] = useState(true) 
   const [page, setPage] = useState(1) 
   const [uid, setUid] = useState({id})
+  const [data, setdata] = useState();
 
   const setUpdatedCountry = (updatedCountry) => {
     let BASE_URL = "http://141.94.204.108:8000/countries/alpha2";
@@ -31,13 +33,23 @@ const Country = () => {
   }
 
   useEffect(()=>{
+    /*
+    const fetchDatas = async () => {
+      const res = await fetch("https://api.coincap.io/v2/assets/?limit=20");
+      const data = await res.json();
+      console.log(data);
+      setdata(data?.data);
+    };
+    fetchDatas();
+    */
+    let BASE_URL = "http://141.94.204.108:8000/countries"
     fetch(`${BASE_URL}/${id}`)
         .then(response=>response.json())
         .then(json=>{
             setCountry(json)
             setIsPending(false)
         })          
-  },[CountryName, page]) 
+  },[]) 
 
   return (
     <Layout>
