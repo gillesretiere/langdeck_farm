@@ -66,6 +66,7 @@ class CountryBase(MongoBaseModel):
     country_languages_summary: str = Field(...)
     country_languages : Any
     country_facts : Any
+    wfb_facts : Any
     country_mapicon : str = Field(...)
 
 class CountryUpdate(MongoBaseModel):

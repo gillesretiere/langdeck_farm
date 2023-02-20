@@ -1,9 +1,11 @@
 import React from 'react'
 import { Link } from "react-router-dom"
 import CountryFactsCard from "../components/CountryFactsCard"
-
+import CountryWFBPrimary from "../components/CountryWFBPrimary"
+// <hr/>
+// <div className="pl-2"><CountryFactsCard country={country}></CountryFactsCard></div> 
 const CountryLanguagesCardHeader = ({country}) => {
-    let {country_uid, region_uid, country_name_en, country_name_fr, country_name_native, country_iso2, country_national_flag, country_summary, country_region_fr, country_languages, country_facts}  = country
+    let {country_uid, region_uid, country_name_en, country_name_fr, country_name_native, country_iso2, country_national_flag, country_summary, country_region_fr, country_languages, country_facts, wfb_facts}  = country
     console.log(country)
     return (
         <>
@@ -31,9 +33,8 @@ const CountryLanguagesCardHeader = ({country}) => {
                             </div>
                         </div>
                         <div className="pl-2 card-label-xl">Facts</div>
-                        <hr/>
-                        <div className="pl-2"><CountryFactsCard country={country}></CountryFactsCard></div> 
-                        <hr/>
+                        <hr/>   
+                        <div className="pl-2"><CountryWFBPrimary wfb_facts={wfb_facts}></CountryWFBPrimary></div>                    
                     </div>  
                 </div>  
             </div>  

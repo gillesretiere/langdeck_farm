@@ -2,9 +2,10 @@ import React from 'react'
 import { Link } from "react-router-dom"
 import CountryFactsPeopleAndSociety from "../components/CountryFactsPeopleAndSociety"
 import CountryFactsGeography from "../components/CountryFactsGeography";
+import CountryWFBPrimary from "../components/CountryWFBPrimary";
 
 const CountryFactsCard = ({country}) => {
-    let {country_uid, country_facts} = country
+    let {country_uid, country_facts, wfb_facts} = country
     console.log(country)
   return (
     <>
@@ -26,8 +27,10 @@ const CountryFactsCard = ({country}) => {
                         return (<></>)
                     }
             }
-            )}    
+            )}   
+                     
         </div>
+
     </>
   )
 }
