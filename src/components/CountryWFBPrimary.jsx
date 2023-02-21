@@ -9,7 +9,7 @@ const CountryWFBPrimary = ({wfb_facts}) => {
                 <div className="card-h4">{wfb_facts.Location}</div>         
                 <hr/>                
                 <div className="card-label">Area</div>
-                <div className="card-h4">{wfb_facts.Area.total}</div>         
+                <div className="card-h4">{wfb_facts.Area.total}</div>
                 <hr/>             
                 <div className="card-label">Land boundaries</div>
                 <div className="card-h4">{wfb_facts.Land_boundaries.border_countries}</div>         

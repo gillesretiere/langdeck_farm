@@ -21,10 +21,10 @@ const ChartCountryLanguages = ({language}) => {
 
                 <div className="basis-2/3 pl-2">
                      <div className="card-h2">{language_name_en}</div>
-                     <div className="card-h3">{language_name_native}</div>                     
+                     <div className="card-h4">{language_name_native}</div>                     
                      <hr/>
                      <div className="card-label">Code Alpha-3</div>
-                     <div className="card-h3">{language_uid}</div>
+                     <div className="card-h4">{language_uid}</div>
                      <hr/>                     
                 </div>
                 <div className="language-chart basis-1/3">
