@@ -55,7 +55,7 @@ class LanguageMapComponent extends Component {
         // ... chart code goes here ...
         let root = am5.Root.new(`mapdiv${this.props.language.language_uid}`);
         console.log("mounted");
-
+        let colorMap = am5.color(0x10403B);
         let colorset = am5.ColorSet.new(root, {});
 
         this.setState({country_points: {}}, function () {
@@ -76,14 +76,14 @@ class LanguageMapComponent extends Component {
 
         chart.chartContainer.set("background", am5.Rectangle.new(root, {
           fill: am5.color(0x253C59),
-          fillOpacity: 0.8
+          fillOpacity: 0.3
         }));
   
 
         let polygonSeries = chart.series.push(
             am5map.MapPolygonSeries.new(root, {
               geoJSON: am5geodata_worldLow,
-              fill: am5.color(0x99B4BF), //0xBFBFB8
+              fill: am5.color(0x99B4BF), //colormap
               fillOpacity: 0.9,
               stroke: am5.color(0x888888),
               exclude: ["AQ"]
@@ -238,10 +238,13 @@ class LanguageMapComponent extends Component {
     }
   
     render() {
-      return (
-        <div className="shadow-lg border p-7 bg-slate-500">
+      return (   
+        <>
+        <div className="p-2 card-header card-header-r">Map Locator : {this.props.language.language_name_en}</div>
+        <div className="bg-black shadow-lg p-7">  
           <div id={`mapdiv${this.props.language.language_uid}`}></div>
-        </div>        
+        </div>
+        </>        
       );
 
     }

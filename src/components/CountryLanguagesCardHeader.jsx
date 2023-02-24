@@ -12,7 +12,7 @@ const CountryLanguagesCardHeader = ({country}) => {
             <div className="bg-white">
                 <div className="card-wrapper-row">  
                     <div className="card-wrapper-column-left">   
-                        <div className="p-2 card-header card-header-c">{country_name_fr}</div>
+                        <div className="p-2 card-header card-header-c">Country Fact Sheet : {country_name_en}</div>
                         <div className="container w-full h-screen flex-1 flex-col md:flex-row">  
                             <div className="split basis-1/2 pr-2">
                                 <Link to={`/languages/country/${country_uid}`}>

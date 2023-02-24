@@ -4,6 +4,7 @@ import {useState, useEffect} from 'react'
 import Layout from "../components/Layout"
 import LanguageMapComponent from "../components/LanguageMapComponent"
 import LanguageCardSummary from "../components/LanguageCardSummary"
+import LanguageCardCountries from "../components/LanguageCardCountries"
 
 let BASE_URL = "http://141.94.204.108:8000/languages"
 
@@ -22,10 +23,10 @@ const Language = () => {
 
   return (
     <Layout>
-      <div className="container w-full h-screen flex flex-col md:flex-row">
-        <div className="basis-1/2 m-8"><LanguageMapComponent language={language}></LanguageMapComponent></div>
-        <div className="basis-1/4 m-8"><LanguageCardSummary language={language}></LanguageCardSummary></div>
-        <div className="basis-1/4 m-8"><LanguageCardSummary language={language}></LanguageCardSummary></div>
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-2 gap-3">
+        <div className="card-item"><LanguageMapComponent language={language}></LanguageMapComponent></div>
+        <div className="card-item"><LanguageCardCountries language={language}></LanguageCardCountries></div>
+        <div className="card-item"><LanguageCardSummary language={language}></LanguageCardSummary></div>
       </div>
     </Layout>
   )

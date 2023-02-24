@@ -36,6 +36,11 @@ class CountryMapComponent extends Component {
       }));
       chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 
+      chart.chartContainer.set("background", am5.Rectangle.new(root, {
+        fill: am5.color(0x253C59),
+        fillOpacity: 0.3
+      }));
+
       let polygonSeries = chart.series.push(
         am5map.MapPolygonSeries.new(root, {
           geoJSON: am5geodata_worldLow,
@@ -215,7 +220,7 @@ class CountryMapComponent extends Component {
     render() {
       return (
         <>
-        <div className="p-2 card-header card-header-r">Map Locator : {this.props.country.country_name_fr}</div>
+        <div className="p-2 card-header card-header-r">Map Locator : {this.props.country.country_name_en}</div>
         <div className="bg-black shadow-lg p-7">  
           <div id={`chartdiv${this.props.country.country_iso2}`}> </div>
         </div>

@@ -60,6 +60,7 @@ p {
   font-size: 1em;
   font-style: normal;
   letter-spacing: 1px;
+  padding: 5px;
 }
 
 .logo {
@@ -474,7 +475,7 @@ p {
   
   div[id^='mapdiv']{
     width: auto;
-    height: 500px;
+    height: 300px;
   }
 
 

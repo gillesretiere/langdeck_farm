@@ -9,7 +9,7 @@ const CountryCardLanguageChart = ({country}) => {
             <div className="bg-white">
             <div className="card-wrapper-row">  
                 <div className="card-wrapper-column-left">
-                <div className="p-2 card-header card-header-l">Languages : {country.country_name_fr}</div>
+                <div className="p-2 card-header card-header-l">Languages : {country.country_name_en}</div>
                     {country_languages && country_languages.sort((a, b) => a.popularity_as_float > b.popularity_as_float?-1:1).map(
                     (el)=>{
                         return (                  
