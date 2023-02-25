@@ -8,44 +8,45 @@ import TranslatorCard from "../components/TranslatorCard"
 
 let BASE_URL = "http://141.94.204.108:8000/translators"
 
-const Translators = () => {
-  const [translators, setTranslators] = useState([])
-  const [translatorUid, setTranslatorUid] = useState('')
+const Translator = () => {
+  let {id} = useParams()
+  const [languages, setLanguages] = useState([])
+  const [languageName, setLanguageName] = useState('')
   const [isPending, setIsPending] = useState(true) 
 
-  const handleChangeTranslatorUid = (ev) => {
-    setTranslators([])  
-    setTranslatorUid(ev.target.value)      
+  const handleChangeLanguageName = (ev) => {
+    setLanguages([])        
+    setLanguageName(ev.target.value)
     setIsPending(true)
   }
 
 
   useEffect(()=>{
-    fetch(`${BASE_URL}/${translatorUid}`)
+    fetch(`${BASE_URL}/${id}`)
         .then(response=>response.json())
         .then(json=>{
-            setTranslators(json)
+            setLanguages(json)
             setIsPending(false)
         })  
         .then()        
-  }) 
+  },[languageName]) 
 
-  console.log(translators);
+  console.log(languages);
   
   return (
 
     
     <Layout>
         <div className="mx-8">     
-        {isPending}             
+        {isPending && <Loading languageName={languageName} />}             
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
-          {Array.isArray(translators) ? translators.map(
+          {Array.isArray(languages) ? languages.map(
             el => {
               return (                               
                 <TranslatorCard key={el._id} translator = {el} />                     
               )
           })
-          : <TranslatorCard translator = {translators} /> }
+          : <TranslatorCard translator = {languages} /> }
               
           </div>
           <Link to={`/translators/`}><div>Choose all language</div></Link>
@@ -54,4 +55,4 @@ const Translators = () => {
   )
 }
 
-export default Translators
+export default Translator

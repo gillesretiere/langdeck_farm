@@ -11,6 +11,7 @@ from routers.translators import router as translators_router
 
 HOST = config('HOST', cast=str)
 DOMAIN = config('DOMAIN', cast=str)
+WWW_DOMAIN = config('WWW_DOMAIN', cast=str)
 
 origins = [
 "http://localhost",
@@ -25,6 +26,10 @@ origins = [
 "http://"+DOMAIN+":8080",
 "http://"+DOMAIN+":8000",
 "http://"+DOMAIN+":3000",
+"http://"+WWW_DOMAIN,
+"http://"+WWW_DOMAIN+":8080",
+"http://"+WWW_DOMAIN+":8000",
+"http://"+WWW_DOMAIN+":3000",
 ]
 
 DB_URL = config('DB_URL', cast=str)

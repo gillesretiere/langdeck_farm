@@ -6,7 +6,7 @@ import CountryWFBPrimary from "../components/CountryWFBPrimary"
 // <div className="pl-2"><CountryFactsCard country={country}></CountryFactsCard></div> 
 const CountryLanguagesCardHeader = ({country}) => {
     let {country_uid, region_uid, country_name_en, country_name_fr, country_name_native, country_iso2, country_national_flag, country_summary, country_region_fr, country_languages, country_facts, wfb_facts}  = country
-    console.log(country)
+    //console.log(country)
     return (
         <>
             <div className="bg-white">

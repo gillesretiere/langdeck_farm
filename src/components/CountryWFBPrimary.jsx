@@ -2,7 +2,7 @@ import React from 'react'
 
 const CountryWFBPrimary = ({wfb_facts}) => {
     if (wfb_facts) {
-        console.log(wfb_facts)
+        //console.log(wfb_facts)
         return (
             <>
                 <div className="card-label">Location</div>

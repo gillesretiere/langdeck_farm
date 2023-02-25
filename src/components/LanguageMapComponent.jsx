@@ -54,15 +54,15 @@ class LanguageMapComponent extends Component {
     componentDidMount() {
         // ... chart code goes here ...
         let root = am5.Root.new(`mapdiv${this.props.language.language_uid}`);
-        console.log("mounted");
+        //console.log("mounted");
         let colorMap = am5.color(0x10403B);
         let colorset = am5.ColorSet.new(root, {});
 
         this.setState({country_points: {}}, function () {
-          console.log(this.state.country_points);
+          //console.log(this.state.country_points);
          });
          this.setState({countries: this.props.language.language_countries}, function () {
-          console.log(this.state.countries);
+          //console.log(this.state.countries);
          });         
         root.setThemes([
             am5themes_Animated.new(root)
@@ -143,7 +143,7 @@ class LanguageMapComponent extends Component {
           ]);   
 
           this.setState({country_points: country_points}, function () {
-            console.log(this.state.country_points);
+            //console.log(this.state.country_points);
            });
 
           let pointSeries = this.chart.series.push(
@@ -152,7 +152,7 @@ class LanguageMapComponent extends Component {
             })
           );
 
-          console.log(country_points)
+          //console.log(country_points)
 
           let vk_sel = country_points.features.map(a => a.properties.country_iso2)
           let vk_world = am5geodata_worldLow.features.map(a => a.properties.id)

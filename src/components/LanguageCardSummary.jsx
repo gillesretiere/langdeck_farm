@@ -36,7 +36,7 @@ const LanguageCardSummary = ({language}) => {
                     <div className="card-label">Code WALS</div>
                     <div className="card-h3">{language_wals_code}</div>   
                     <hr/>
-                    <Link to={`/translators`}>
+                    <Link to={`/translators/${language_uid}`}>
                         <div>Choose this language</div>
                     </Link>    
                 </div>

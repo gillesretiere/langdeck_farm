@@ -15,6 +15,7 @@ import RegionCountry from './pages/RegionCountry';
 import CountryLanguages from './pages/CountryLanguages';
 import LanguageCountries from './pages/LanguageCountries';
 import Translators from './pages/Translators';
+import Translator from './pages/Translator';
 import './index.css';
 
 import App from './App';
@@ -40,6 +41,7 @@ root.render(
         <Route path="regionCountries/:id" element={<RegionCountry />} />
         <Route path="countries/language/:id" element={<LanguageCountries />} />
         <Route path="translators" element={<Translators />} />
+        <Route path="translators/:id" element={<Translator />} />        
         <Route path="*" element={
         <main style={{ padding: "1rem" }}>
           <p>There's nothing here!</p>

@@ -111,12 +111,12 @@ class CountryMapComponent extends Component {
             let {init, country, stage} = this.state;
 
             if (stage==0) {
-              console.log("INIT")
+              //console.log("INIT")
               this.setState({ init: false });
               this.setState({ country : this.props.country.country_iso2});
               this.setState({ stage : 1});
-              console.log(stage);
-              console.log(country);
+              //console.log(stage);
+              //console.log(country);
               this.polygonSeries.data.setAll([{
                 id: this.props.country.country_iso2,
                 polygonSettings: {
@@ -134,7 +134,7 @@ class CountryMapComponent extends Component {
               */
             }
               else if (stage == 1) {
-                  console.log("UNINIT")
+                  //console.log("UNINIT")
                   this.setState({ stage : 2});
                   /*
                   console.log(init);

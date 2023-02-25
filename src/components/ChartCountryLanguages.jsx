@@ -13,7 +13,7 @@ import Chart from "../components/Chart";
 const ChartCountryLanguages = ({language}) => {
 
     let {language_uid, language_name_fr, language_name_en, language_name_native, popularity, popularity_as_float} = language
-    console.log(language);
+    //console.log(language);
 
     return (
      
