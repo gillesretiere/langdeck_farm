@@ -1,4 +1,5 @@
 import React,{useState} from 'react';
+
 import Layout from "./components/Layout";
 export const cardContext = React.createContext();
 
@@ -25,6 +26,7 @@ function App() {
     loading: true,
     error: '',
     };
+
   <cardContext.Provider value={menuItems}>
     return (
       <div class="amchart" id="chartdiv">

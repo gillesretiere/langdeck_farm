@@ -31,11 +31,7 @@ const Translator = () => {
         .then()        
   },[languageName]) 
 
-  console.log(languages);
-  
   return (
-
-    
     <Layout>
         <div className="mx-8">     
         {isPending && <Loading languageName={languageName} />}             
@@ -49,7 +45,7 @@ const Translator = () => {
           : <TranslatorCard translator = {languages} /> }
               
           </div>
-          <Link to={`/translators/`}><div>Choose all language</div></Link>
+          <Link to={`/translators2/`}><div>Choose all language</div></Link>
         </div> 
     </Layout>
   )
