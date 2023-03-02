@@ -45,7 +45,7 @@ const Translator = () => {
           : <TranslatorCard translator = {languages} /> }
               
           </div>
-          <Link to={`/translators2/`}><div>Choose all language</div></Link>
+          <Link to={`/translators2/`}><div>Pick up a domain, then a theme</div></Link>
         </div> 
     </Layout>
   )
