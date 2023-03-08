@@ -143,4 +143,12 @@ class TranslatorLanguageBase(MongoBaseModel):
 class TranslatorLanguageDB(TranslatorLanguageBase):
     pass
 
+# languages available for vocabularies (themes)
+class VocabulariesLanguageTheme(MongoBaseModel):
+    language_uid: str = Field(..., min_length=3, max_length=3)
+    themes : Optional[Any]
+
+class VocabulariesLanguageThemeDB(VocabulariesLanguageTheme):
+    pass
+
 # glossaries

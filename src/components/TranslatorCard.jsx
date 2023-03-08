@@ -3,7 +3,6 @@ import { Link } from "react-router-dom"
 
 const TranslatorCard = ({translator}) => {
     let {language_uid, language_name_en, language_name_native, flag_icon} = translator;
-    console.log(translator)
   return (
     <>
 <section data-theme="dark">

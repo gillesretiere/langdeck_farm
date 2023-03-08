@@ -19,8 +19,6 @@ const Translator = () => {
     setLanguageName(ev.target.value)
     setIsPending(true)
   }
-
-
   useEffect(()=>{
     fetch(`${BASE_URL}/${id}`)
         .then(response=>response.json())
@@ -45,7 +43,7 @@ const Translator = () => {
           : <TranslatorCard translator = {languages} /> }
               
           </div>
-          <Link to={`/translators2/`}><div>Pick up a domain, then a theme</div></Link>
+          <Link to={`/vocalangthemes/${id}`}><div>Pick up a domain, then a theme ${id}</div></Link>
         </div> 
     </Layout>
   )
