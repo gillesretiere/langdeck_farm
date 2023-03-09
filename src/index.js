@@ -22,7 +22,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 import 'react-bootstrap-typeahead/css/Typeahead.bs5.css';
 import './index.css';
-
+import { AuthProvider } from './context/AuthProvider';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
@@ -31,6 +31,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
       <BrowserRouter>
+      <AuthProvider>
       <Routes>
         <Route path="/" element={<Regions />} />
         <Route path="regions" element={<Regions />} />    
@@ -47,8 +48,7 @@ root.render(
         <Route path="countries/language/:id" element={<LanguageCountries />} />
         <Route path="translators" element={<Translators />} />
         <Route path="translators2" element={<Translators2 />} />
-        <Route path="translators/:id" element={<Translator />} /> 
-        <Route path="vocalangthemes" element={<VocabulariesLanguageThemes />} />                    
+        <Route path="translators/:id" element={<Translator />} />              
         <Route path="vocalangthemes/:id" element={<VocabulariesLanguageThemes />} />            
         <Route path="*" element={
         <main style={{ padding: "1rem" }}>
@@ -57,6 +57,7 @@ root.render(
       }
     />
       </Routes>
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

@@ -1,7 +1,9 @@
 import React,{useState} from 'react';
 
 import Layout from "./components/Layout";
-export const cardContext = React.createContext();
+export const cardContext = React.createContext({
+  language_uid: 'fre',
+});
 
 function App() {
   const [menuItems, setMenuItems] = useState([

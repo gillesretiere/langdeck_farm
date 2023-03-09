@@ -2,6 +2,7 @@ import React from 'react'
 import {useParams, useNavigate} from "react-router-dom"
 import {useState, useEffect,useContext} from 'react'
 import { Link } from "react-router-dom"
+import useAuth from "../hooks/useAuth";
 import Layout from "../components/Layout"
 import Loading from "../components/Loading"
 import TranslatorCard from "../components/TranslatorCard"
@@ -9,7 +10,8 @@ import TranslatorCard from "../components/TranslatorCard"
 let BASE_URL = "http://141.94.204.108:8000/translators"
 
 const Translator = () => {
-  let {id} = useParams()
+  const { auth, setAuth } = useAuth();
+  let {id} = useParams() 
   const [languages, setLanguages] = useState([])
   const [languageName, setLanguageName] = useState('')
   const [isPending, setIsPending] = useState(true) 

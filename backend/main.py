@@ -8,6 +8,7 @@ from routers.countries import router as countries_router
 from routers.languages import router as languages_router
 from routers.regionCountries import router as regionCountries_router
 from routers.translators import router as translators_router
+from routers.vocalangthemes import router as vocalangthemes_router
 
 HOST = config('HOST', cast=str)
 DOMAIN = config('DOMAIN', cast=str)
@@ -58,6 +59,8 @@ app.include_router(countries_router, prefix="/countries", tags=["countries"])
 app.include_router(languages_router, prefix="/languages", tags=["languages"])
 app.include_router(regionCountries_router, prefix="/regionCountries", tags=["regionCountries"])
 app.include_router(translators_router, prefix="/translators", tags=["translators"])
+app.include_router(vocalangthemes_router, prefix="/vocalangthemes", tags=["vocalangthemes"])
+
 
 if __name__ == "__main__":
     uvicorn.run("__main__:app",host='141.94.204.108',port=8000, reload=True)
