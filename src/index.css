@@ -411,6 +411,22 @@ p {
                                             border-top: 1px solid #FA7F08;
                                         }
 
+.v-card {
+  font-family: var(--secondary-font);
+  font-weight: 400;
+  font-size: 2em;
+  font-style: normal;
+  letter-spacing: 1px;
+  padding: 5px;  
+  height:100%;
+}
+
+.v-card :hover {
+  color: white;
+  /*background-color: #FA7F08;*/
+  filter: brightness(99%);
+}
+
 .circle {
     background-color: #FA7F08;
     border-radius: 50%;

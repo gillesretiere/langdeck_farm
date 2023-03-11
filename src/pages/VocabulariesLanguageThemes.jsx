@@ -16,6 +16,8 @@ const VocabulariesLanguageThemes = () => {
   const [languages, setLanguages] = useState([])
   const [languageName, setlanguageName] = useState('')
   const [isPending, setIsPending] = useState(true) 
+  const menuItems = useContext(cardContext);
+  menuItems.component="VocabulariesLanguageThemes"
 
   const handleChangeVocabulariesLanguageThemesUid = (ev) => {
     setLanguages([])  

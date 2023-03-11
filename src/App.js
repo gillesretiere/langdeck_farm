@@ -2,8 +2,11 @@ import React,{useState} from 'react';
 
 import Layout from "./components/Layout";
 export const cardContext = React.createContext({
-  language_uid: 'fre',
+  language: {"language_uid":"fre", "active":"false"},
+  theme:{"theme":"Void"}
 });
+
+export const foodItemsContext = React.createContext();
 
 function App() {
   const [menuItems, setMenuItems] = useState([
@@ -11,13 +14,16 @@ function App() {
       region: {},
       country: {},
       language: {},
+      theme: {},
       countries: [],
       languages: [],
       filter: '',
       loading: true,
       error: '',
+      component:'',
       }
   ]);
+
   const initialState = {
     region: {},
     country: {},
@@ -32,7 +38,7 @@ function App() {
   <cardContext.Provider value={menuItems}>
     return (
       <div class="amchart" id="chartdiv">
-        <Layout>
+        <Layout >
           <div>
             This is the App
           </div>

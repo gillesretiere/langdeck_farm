@@ -13,14 +13,20 @@ const Translators = () => {
   const [translators, setTranslators] = useState([])
   const [translatorUid, setTranslatorUid] = useState('')
   const [isPending, setIsPending] = useState(1) 
-
+  const menuItems = useContext(cardContext);
+  menuItems.component="Translators"
+  
   const handleChangeTranslatorUid = (ev) => {
     setTranslators([])  
     setTranslatorUid(ev.target.value)      
     setIsPending(true)
   }
 
-  //const menuItems = useContext(cardContext);
+  const handleClick = (ev) => {
+    menuItems.language.language_uid=ev.target.value
+    console.log(menuItems.language.language_uid)
+    };
+
 
   useEffect(()=>{
     fetch(`${BASE_URL}/${translatorUid}`)
