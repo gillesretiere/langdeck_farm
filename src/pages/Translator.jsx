@@ -5,7 +5,9 @@ import { Link } from "react-router-dom"
 import useAuth from "../hooks/useAuth";
 import Layout from "../components/Layout"
 import Loading from "../components/Loading"
-import TranslatorCard from "../components/TranslatorCard"
+import TranslatorSelCard from "../components/TranslatorSelCard"
+import { cardContext } from "../App";
+
 
 let BASE_URL = "http://141.94.204.108:8000/translators"
 
@@ -15,6 +17,9 @@ const Translator = () => {
   const [languages, setLanguages] = useState([])
   const [languageName, setLanguageName] = useState('')
   const [isPending, setIsPending] = useState(true) 
+  const menuItems = useContext(cardContext);
+  menuItems.component="Translator"
+  menuItems.translator=languages
 
   const handleChangeLanguageName = (ev) => {
     setLanguages([])        
@@ -36,16 +41,9 @@ const Translator = () => {
         <div className="mx-8">     
         {isPending && <Loading languageName={languageName} />}             
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
-          {Array.isArray(languages) ? languages.map(
-            el => {
-              return (                               
-                <TranslatorCard key={el._id} translator = {el} />                     
-              )
-          })
-          : <TranslatorCard translator = {languages} /> }
-              
+          <TranslatorSelCard translator = {languages}></TranslatorSelCard>
           </div>
-          <Link to={`/vocalangthemes/${id}`}><div>Pick up a domain, then a theme ${id}</div></Link>
+          <Link to={`/translators`}><div>Pick up another language</div></Link>
         </div> 
     </Layout>
   )

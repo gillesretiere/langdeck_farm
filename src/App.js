@@ -14,6 +14,7 @@ function App() {
       region: {},
       country: {},
       language: {},
+      translator: {},
       theme: {},
       countries: [],
       languages: [],

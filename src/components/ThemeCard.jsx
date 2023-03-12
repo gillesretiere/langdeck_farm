@@ -4,13 +4,13 @@ import { useContext } from "react";
 import { cardContext } from "../App";
 
 const ThemeCard = ({theme_item,selectedThemeFunction}) => {
-    let {language_uid, theme} = theme_item;
+    let {language_uid, theme, vocabularies} = theme_item;
     const menuItems = useContext(cardContext);
-    console.log(theme_item);
+    // console.log(theme_item);
 
     const shoot = () => {
       menuItems.theme.theme=theme;
-      menuItems.theme.vocabularies=theme_item.vocabularies;
+      menuItems.theme.vocabularies=vocabularies;
     }
 
   return (

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 import Layout from "../components/Layout"
 import Loading from "../components/Loading"
 import VocabularyLanguageThemeCard from "../components/VocabularyLanguageThemeCard"
+import TranslatorSelCard from "../components/TranslatorSelCard"
 import LanguageThemeCard from "../components/LanguageThemeCard"
 import { cardContext } from "../App";
 
@@ -12,12 +13,12 @@ let BASE_URL = "http://141.94.204.108:8000/vocalangthemes"
 
 const VocabulariesLanguageThemes = () => {
   let {id} = useParams();
-
   const [languages, setLanguages] = useState([])
   const [languageName, setlanguageName] = useState('')
   const [isPending, setIsPending] = useState(true) 
   const menuItems = useContext(cardContext);
   menuItems.component="VocabulariesLanguageThemes"
+  let translator = menuItems.translator
 
   const handleChangeVocabulariesLanguageThemesUid = (ev) => {
     setLanguages([])  
@@ -39,7 +40,15 @@ const VocabulariesLanguageThemes = () => {
 
     <Layout>
         <div className="mx-8">  
-
+        <div>Your current selection : </div>
+        <div className="current-selection">
+          
+          <div><TranslatorSelCard translator = {translator}></TranslatorSelCard></div>
+          
+        </div>
+        <div className="mb-4">&nbsp;</div>
+        <hr/>
+        <div>Choose vocabulary : </div>
         {isPending && <Loading languageName={languageName} />}             
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-1">
           {Array.isArray(languages) ? languages.map(
@@ -51,7 +60,6 @@ const VocabulariesLanguageThemes = () => {
           : <LanguageThemeCard languageThemes = {languages} /> }
               
           </div>
-          <Link to={`/vocalangthemes/${id}`}><div>Choose vocabulary</div></Link>
         </div> 
     </Layout>
   )
