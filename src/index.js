@@ -19,6 +19,7 @@ import Translators2 from './pages/Translators2';
 import Translator from './pages/Translator';
 import VocabulariesLanguageThemes from './pages/VocabulariesLanguageThemes';
 import ThemeVocabularies from './pages/ThemeVocabularies';
+import Vocabularies from './pages/Vocabularies';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 import 'react-bootstrap-typeahead/css/Typeahead.bs5.css';
@@ -52,6 +53,7 @@ root.render(
         <Route path="translators/:id" element={<Translator />} />              
         <Route path="vocalangthemes/:id" element={<VocabulariesLanguageThemes />} />           
         <Route path="themevocabularies/:id" element={<ThemeVocabularies />} />       
+        <Route path="vocabularies" element={<Vocabularies />} />             
         <Route path="*" element={
         <main style={{ padding: "1rem" }}>
           <p>There's nothing here!</p>

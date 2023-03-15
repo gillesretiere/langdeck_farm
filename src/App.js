@@ -18,6 +18,8 @@ function App() {
       theme: {},
       countries: [],
       languages: [],
+      vocabularies:[],
+      vocabulary:{},
       filter: '',
       loading: true,
       error: '',
