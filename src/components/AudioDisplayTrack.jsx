@@ -11,8 +11,6 @@
     //console.log(audio_path)
     const www="https://res.cloudinary.com/dhc7ovnwk/video/upload/v1678890600/langdeck/assets/audio/flex-vector-bord-ready-instrumental.m4a"
 
-    const baseUrl = "../assets/audio/ai/";
-
   return <div>DisplayTrack {audio_path} content here
     {/* <SimpleAudio2 src={audio_path}></SimpleAudio2> */}
     <VocAudioPlayer path={audio_path}></VocAudioPlayer>
