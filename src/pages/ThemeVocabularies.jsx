@@ -12,7 +12,7 @@ const ThemeVocabularies = () => {
     menuItems.component="ThemeVocabularies"
     let translator = menuItems.translator
     let theme_item = menuItems.theme
-    console.log(theme_item)
+    // console.log(theme_item)
 
   return (
     <Layout>

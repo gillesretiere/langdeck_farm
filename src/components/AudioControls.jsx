@@ -5,7 +5,6 @@ class AudioControls extends React.Component {
   state = { mp3Source : null };
   
   componentDidMount() {
-    let path = require('../assets/audio/ai/EC01-ROM-001_34.mp3').default;
     const MP3_URL = "https://res.cloudinary.com/dhc7ovnwk/video/upload/v1678890600/langdeck/assets/audio/flex-vector-bord-ready-instrumental.m4a"
     this.setState({ mp3Source: this.loadTrack(MP3_URL) });
   }

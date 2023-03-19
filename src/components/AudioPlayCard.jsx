@@ -1,12 +1,12 @@
 import React from 'react'
 import {useEffect, useState} from 'react'
 import ReactDOM from "react-dom";
-import ringer from "../assets/audio/ai/EC01-ROM-001_45.mp3";
+import ringer from "../assets/audio/ai/2344ba84-dan.mp3";
 require.context('../assets/audio/ai', false, /\.(mp3|mp4)$/)
 
 const AudioPlayCard = ({audio_item}) => {
     
-    let test_path = "../assets/audio/ai/EC01-ROM-001_45.mp3"
+    let test_path = "../assets/audio/ai/2344ba84-dan.mp3"
     let path = {audio_item};
     console.log(test_path)
     const audio = new Audio(ringer);
@@ -17,7 +17,7 @@ const AudioPlayCard = ({audio_item}) => {
 
     useEffect(() => {
       async function importFile() {
-        let file = require("../assets/audio/ai/EC01-ROM-001_04.mp3");
+        let file = require("../assets/audio/ai/2344ba84-dan.mp3");
         setSoundFile(file);
       }
       importFile();

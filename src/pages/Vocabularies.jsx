@@ -14,7 +14,7 @@ const Vocabularies = () => {
     let translator = menuItems.translator
     let theme_item = menuItems.theme
     let vocabulary_item = menuItems.vocabulary
-    console.log(vocabulary_item)
+    // console.log(vocabulary_item)
 
   return (
     <Layout>

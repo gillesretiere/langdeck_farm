@@ -11,6 +11,7 @@ function importAll(r) {
   return images
  }
 const AllImages = importAll(require.context('../assets/images', false, /\.(png|jpe?g|svg)$/));
+console.log(AllImages)
 
 const CountryCardMini = ({country}) => {
     let {country_uid, region_uid, country_name_en, country_name_fr, country_name_native, country_iso2, country_national_flag, country_summary, country_region_fr, country_languages} = country   
