@@ -25,17 +25,6 @@ function App() {
       }
   ]);
 
-  const initialState = {
-    region: {},
-    country: {},
-    language: {},
-    countries: [],
-    languages: [],
-    filter: '',
-    loading: true,
-    error: '',
-    };
-
   <cardContext.Provider value={menuItems}>
     return (
       <div class="amchart" id="chartdiv">

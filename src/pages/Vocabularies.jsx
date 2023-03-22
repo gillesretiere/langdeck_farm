@@ -2,14 +2,14 @@ import React from 'react'
 import Layout from "../components/Layout"
 import { useContext } from "react";
 import { cardContext } from "../App";
-import AudioPlayer from "../components/AudioPlayer"
+import VocabularyAudioCard from "../components/VocabularyAudioCard"
 import TranslatorSelCard from "../components/TranslatorSelCard"
 import ThemeSelCard from "../components/ThemeSelCard"
 import VocaSelCard from "../components/VocaSelCard"
 
 const Vocabularies = () => {
     const menuItems = useContext(cardContext);
-    const vocabulary=menuItems.theme.vocabulary;
+    // const vocabulary=menuItems.theme.vocabulary;
     menuItems.component="Vocabularies"
     let translator = menuItems.translator
     let theme_item = menuItems.theme
@@ -30,7 +30,7 @@ const Vocabularies = () => {
         <div className="mb-4">&nbsp;</div>
         <hr/>
         <div>
-            <AudioPlayer vocabulary_item={vocabulary_item}></AudioPlayer>
+            <VocabularyAudioCard vocabulary_item={vocabulary_item}></VocabularyAudioCard>
         </div>
         </div> 
     </Layout>

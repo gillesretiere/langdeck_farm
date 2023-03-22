@@ -15,14 +15,15 @@ import RegionCountry from './pages/RegionCountry';
 import CountryLanguages from './pages/CountryLanguages';
 import LanguageCountries from './pages/LanguageCountries';
 import Translators from './pages/Translators';
-import Translators2 from './pages/Translators2';
 import Translator from './pages/Translator';
 import VocabulariesLanguageThemes from './pages/VocabulariesLanguageThemes';
 import ThemeVocabularies from './pages/ThemeVocabularies';
 import Vocabularies from './pages/Vocabularies';
+/*
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 import 'react-bootstrap-typeahead/css/Typeahead.bs5.css';
+*/
 import './index.css';
 import { AuthProvider } from './context/AuthProvider';
 import App from './App';
@@ -49,7 +50,6 @@ root.render(
         <Route path="regionCountries/:id" element={<RegionCountry />} />
         <Route path="countries/language/:id" element={<LanguageCountries />} />
         <Route path="translators" element={<Translators />} />
-        <Route path="translators2" element={<Translators2 />} />
         <Route path="translators/:id" element={<Translator />} />              
         <Route path="vocalangthemes/:id" element={<VocabulariesLanguageThemes />} />           
         <Route path="themevocabularies/:id" element={<ThemeVocabularies />} />       
