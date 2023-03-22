@@ -26,7 +26,7 @@ import 'react-bootstrap-typeahead/css/Typeahead.bs5.css';
 import './index.css';
 import { AuthProvider } from './context/AuthProvider';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+// import reportWebVitals from './reportWebVitals';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -69,5 +69,5 @@ root.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+//reportWebVitals();
 

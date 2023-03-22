@@ -9,9 +9,11 @@ const mp3s = require.context('/public/assets/audios/ai', true,/\.(mp3)$/)
 .map((filename) => filename.replace('./', ''));
 
 const VocAudioPlayer = ({path}) => {
-    let short_path = path.split("/")[4];
-    console.log(short_path);
-    console.log(mp3s);
+    let vk_path = path.split("/")
+    let short_path = vk_path[4] +"/" +vk_path[5];
+    console.log(mp3s)
+    console.log(short_path)
+
   return (
     <div>{path}
 {mp3s.map((record) => (

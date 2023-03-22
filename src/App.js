@@ -6,8 +6,6 @@ export const cardContext = React.createContext({
   theme:{"theme":"Void"}
 });
 
-export const foodItemsContext = React.createContext();
-
 function App() {
   const [menuItems, setMenuItems] = useState([
     {
