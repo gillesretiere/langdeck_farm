@@ -6,22 +6,26 @@
   import AudioPlayerAms from "../components/AudioPlayerAms"
   import AudioPlayerWWW from "../components/AudioPlayerWWW"
 
-  const AudioDisplayTrack = ({audio_path}) => {
-    console.log(audio_path)
+  const AudioDisplayTrack = ({vocabulary_item}) => {
+    let {audio, audio_public_url} = vocabulary_item
+    console.log(audio)
     const menuItems = useContext(cardContext);
     menuItems.component="AudioDisplayTrack"
  
     const www="https://res.cloudinary.com/dhc7ovnwk/video/upload/v1678890600/langdeck/assets/audio/flex-vector-bord-ready-instrumental.m4a"
-    let vk_path = audio_path.split("/");
+    let vk_path = audio.split("/");
     let lang = vk_path[4];
     const project = () => {
       switch(lang) {
         case "ukr":   
           console.log("ukr");
-          return <><AudioPlayerUkr path={audio_path}>UKR</AudioPlayerUkr></>;
+          return <><AudioPlayerUkr path={audio}>UKR</AudioPlayerUkr></>;
         case "ams":   
           console.log("ams");
-          return <><AudioPlayerAms path={audio_path}>AMS</AudioPlayerAms></>;              
+          return <><AudioPlayerAms path={audio}>AMS</AudioPlayerAms></>;              
+        case "eng":   
+          console.log("eng");
+          return <><AudioPlayerWWW path={audio_public_url}>ENG</AudioPlayerWWW></>;           
         default: 
           console.log("www");
           return <><AudioPlayerWWW path={www}>CDN Mode</AudioPlayerWWW></>

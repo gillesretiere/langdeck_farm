@@ -6,7 +6,7 @@ const VocabularyAudioCard = ({vocabulary_item}) => {
     return (
       <div>
         <div >
-            <AudioDisplayTrack audio_path={audio}></AudioDisplayTrack>
+            <AudioDisplayTrack vocabulary_item={vocabulary_item}></AudioDisplayTrack>
         </div>
         <div>{translation_ai}</div>
         
