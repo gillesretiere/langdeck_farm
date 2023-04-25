@@ -3,12 +3,14 @@ from decouple import config
 import uvicorn
 from fastapi import FastAPI
 from motor.motor_asyncio import AsyncIOMotorClient
+from routers.localizer import router as localizer_router
 from routers.regions import router as regions_router
 from routers.countries import router as countries_router
 from routers.languages import router as languages_router
 from routers.regionCountries import router as regionCountries_router
 from routers.translators import router as translators_router
 from routers.vocalangthemes import router as vocalangthemes_router
+from routers.stories import router as stories_router
 
 HOST = config('HOST', cast=str)
 DOMAIN = config('DOMAIN', cast=str)
@@ -54,13 +56,14 @@ async def startup_db_client():
 async def shutdown_db_client():
     app.mongodb_client.close()
 
+app.include_router(localizer_router, prefix="/localizer", tags=["localizer"])
 app.include_router(regions_router, prefix="/regions", tags=["regions"])
 app.include_router(countries_router, prefix="/countries", tags=["countries"])
 app.include_router(languages_router, prefix="/languages", tags=["languages"])
 app.include_router(regionCountries_router, prefix="/regionCountries", tags=["regionCountries"])
 app.include_router(translators_router, prefix="/translators", tags=["translators"])
 app.include_router(vocalangthemes_router, prefix="/vocalangthemes", tags=["vocalangthemes"])
-
+app.include_router(stories_router, prefix="/stories", tags=["stories"])
 
 if __name__ == "__main__":
     uvicorn.run("__main__:app",host='141.94.204.108',port=8000, reload=True)

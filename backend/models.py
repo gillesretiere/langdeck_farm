@@ -151,4 +151,11 @@ class VocabulariesLanguageTheme(MongoBaseModel):
 class VocabulariesLanguageThemeDB(VocabulariesLanguageTheme):
     pass
 
+# stories
+class Stories(MongoBaseModel):
+    language: str = Field(..., min_length=3, max_length=3)
+    domains : Optional[Any]
+
+class StoriesDB(Stories):
+    pass
 # glossaries
