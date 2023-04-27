@@ -46,7 +46,9 @@
     --primary-font : neue-haas-grotesk-display,sans-serif;
     --secondary-font : neue-haas-grotesk-text, sans-serif;
     --color-bg: hsl(0, 0%, 100%);
-    --color-bg-light: hsl(0, 0%, 100%);    
+    --color-bg-light: hsl(0, 0%, 100%); 
+    --color-bg-dark: hsl(233, 8%, 19%);   
+    --color-bg-alu: hsl(190, 10%, 80%);     
 }
 
 /* edit the variables in dark mode */
@@ -85,7 +87,7 @@ box-shadow: inset 0 0 0.5px 1px hsla(0, 0%, 100%, 0.1),
   0 0.3px 0.4px hsla(230, 13%, 9%, 0.02),
   0 0.9px 1.5px hsla(230, 13%, 9%, 0.045),
   0 3.5px 6px hsla(230, 13%, 9%, 0.09);
-background-color: var(--color-bg-light);
+background-color: var(--color-bg-alu);
 width: 100%;
 height: 100%;
 font-family : var(--secondary-font);
@@ -112,9 +114,63 @@ border-radius: 12px;
 }
 
 .lemma-label {
-  color: #FA7F08;
   font-family : var(--secondary-font);
   font-size: 0.8em;
+}
+
+.box-linga {
+  box-shadow: inset 0 0 0.5px 1px hsla(0, 0%, 100%, 0.1),
+  /* 2. shadow ring 👇 */
+  0 0 0 1px hsla(230, 13%, 9%, 0.075),
+  /* 3. multiple soft shadows 👇 */
+  0 0.3px 0.4px hsla(230, 13%, 9%, 0.02),
+  0 0.9px 1.5px hsla(230, 13%, 9%, 0.045),
+  0 3.5px 6px hsla(230, 13%, 9%, 0.09);
+background-color: #43BED9;
+color: white;
+width: fit-content;
+block-size: fit-content;
+height: 100%;
+font-family : var(--secondary-font);
+font-size: 0.8em;
+border-radius: 12px;
+}
+
+
+.box-domain {
+  box-shadow: inset 0 0 0.5px 1px hsla(0, 0%, 100%, 0.1),
+  /* 2. shadow ring 👇 */
+  0 0 0 1px hsla(230, 13%, 9%, 0.075),
+  /* 3. multiple soft shadows 👇 */
+  0 0.3px 0.4px hsla(230, 13%, 9%, 0.02),
+  0 0.9px 1.5px hsla(230, 13%, 9%, 0.045),
+  0 3.5px 6px hsla(230, 13%, 9%, 0.09);
+background-color: #6DBF1B;
+color: white;
+width: fit-content;
+block-size: fit-content;
+height: 100%;
+font-family : var(--secondary-font);
+font-size: 0.8em;
+border-radius: 12px;
+}
+
+.box-topic {
+  box-shadow: inset 0 0 0.5px 1px hsla(0, 0%, 100%, 0.1),
+  /* 2. shadow ring 👇 */
+  0 0 0 1px hsla(230, 13%, 9%, 0.075),
+  /* 3. multiple soft shadows 👇 */
+  0 0.3px 0.4px hsla(230, 13%, 9%, 0.02),
+  0 0.9px 1.5px hsla(230, 13%, 9%, 0.045),
+  0 3.5px 6px hsla(230, 13%, 9%, 0.09);
+background-color: #FA7F08;
+color: white;
+width: fit-content;
+block-size: fit-content;
+height: 100%;
+font-family : var(--secondary-font);
+font-size: 0.8em;
+border-radius: 12px;
 }
 
 .box-lemma {
@@ -133,6 +189,86 @@ font-family : var(--secondary-font);
 font-size: 0.8em;
 border-radius: 12px;
 }
+
+.story-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+.story-container {
+  background-color: white;
+  border-radius: 0.8rem;
+  max-width: 64rem;
+}
+
+.story-img-wrap > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-top-left-radius: 0.8rem;
+  border-bottom-left-radius: 0.8rem;
+}
+
+.story-details {
+  padding: 2.3rem;
+}
+
+.story-name{
+  font-family : var(--primary-font);
+  font-size: 2.8rem;
+  line-height: 1.4;  
+  font-weight: 500;
+  color: #141414;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.story-name-translated {
+  font-family : var(--primary-font);
+  font-size: 2.8rem;
+  line-height: 1.4;  
+  font-weight: 700;
+  color: #FA7F08;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.story-intro {
+  font-family : var(--secondary-font);
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #141414;
+  line-height: 1.5;
+}
+
+.story-intro-translated {
+  font-family : var(--secondary-font);
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #FA7F08;
+  line-height: 1.5;
+}
+
+h2 {
+  font-size: 2.8rem;
+  line-height: 1.4;
+  color: hsl(217, 19%, 35%);
+  font-weight: 700;
+}
+
+h3 {
+  font-family : var(--secondary-font);
+  font-size: 1.8rem;
+  line-height: 1.4;
+  color: hsl(217, 19%, 35%);
+  font-weight: 700;
+}
+
 
 section {
   /*background-color: var(--color-bg);*/
@@ -605,6 +741,31 @@ p {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
+}
+
+.story-container {
+  display: flex;
+}
+
+.story-img-wrap {
+  flex: 100% 0 0;
+}
+
+@media screen and (max-width: 800px) {
+  .story-container {
+    flex-direction: column;
+    width: 24rem;
+    min-width: 24rem;
+  }
+  
+  h2 {
+    font-size: 1.2rem;
+  }
+  
+  .story-img-wrap > img {
+    border-top-right-radius: 0.8rem;
+    border-bottom-left-radius: 0;
+  }
 }
 
   @media screen and (max-width: 767px) {

@@ -6,6 +6,7 @@ import Layout from "../components/Layout"
 import Loading from "../components/Loading"
 import CurrentSelectionDeck from "../components/CurrentSelectionDeck"
 import DeckPhraseIterator from "../components/DeckPhraseIterator"
+import DeckStoryHeader from "../components/DeckStoryHeader"
 import DeckStoryIterator from "../components/DeckStoryIterator"
 
 import { cardContext } from "../App";
@@ -23,15 +24,17 @@ const DeckPhrases = () => {
     let domain = menuItems.domain
     let topic = menuItems.topic
     let phrases = menuItems.phrases
-    //console.log(phrases)
+    console.log(stories)
 
 
   return (
     <Layout>
-        <div className="mx-8">  
+        <div className="story-wrapper">  
+          <div className="grid sm:grid-cols-1">
             {/* Component : image + Story descript°
             */}
-            <div><img src="https://res.cloudinary.com/dhc7ovnwk/image/upload/v1682450081/langdeck/assets/images/atthepharmacy.png" alt="https://unsplash.com/fr/photos/NNpo-liY5aU?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink"></img></div>
+            <DeckStoryHeader stories={stories}></DeckStoryHeader>
+
             {/* Component : Story
             */}            
             <div className="grid sm:grid-cols-1">
@@ -45,7 +48,7 @@ const DeckPhrases = () => {
               
                 {/*<DeckStoryIterator phrases={phrases}/> */}
             </div>              
-      
+          </div>
         </div> 
 
     </Layout>
