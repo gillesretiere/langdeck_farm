@@ -3,7 +3,7 @@ import {useState, useEffect,useContext} from 'react'
 import Layout from '../components/Layout'
 import Loading from "../components/Loading"
 import LocalizerCard from '../components/LocalizerCard'
-import TranslatorCard from "../components/TranslatorCard"
+import NewTranslatorCard from "../components/NewTranslatorCard"
 import { cardContext } from "../App";
 
 let BASE_URL = "http://141.94.204.108:8000/localizer"
@@ -47,7 +47,7 @@ const Localizer = () => {
                     {regions && regions.map(
                     (el)=>{
                         return (                               
-                            <TranslatorCard key={el._id} translator = {el} />                           
+                            <NewTranslatorCard key={el._id} translator = {el} />                           
                         )
                     }
                     )}

@@ -6,6 +6,7 @@ import Layout from "../components/Layout"
 import Loading from "../components/Loading"
 import CurrentSelectionDeck from "../components/CurrentSelectionDeck"
 import DeckDomainIterator from "../components/DeckDomainIterator"
+import DeckSelection from "../components/DeckSelection"
 
 import { cardContext } from "../App";
 
@@ -17,13 +18,15 @@ const DeckDomains = () => {
     const [languageName, setlanguageName] = useState('')
     const [isPending, setIsPending] = useState(true) 
     const menuItems = useContext(cardContext);
+    let translator = menuItems.translator
+    /*
     menuItems.domain = ""
     menuItems.theme = ""
     menuItems.topic = ""
     menuItems.story = ""
+    */
     menuItems.component="DeckDomains"
     menuItems.stories = languages
-    let translator = menuItems.translator
   
     const handleChangeVocabulariesLanguageThemesUid = (ev) => {
       setLanguages([])  
@@ -43,13 +46,10 @@ const DeckDomains = () => {
 
   return (
     <Layout>
-        <div className="mx-8">  
+        <div className="mx-0">  
 
-            <div><CurrentSelectionDeck /></div>  
-
+            <div><DeckSelection /></div>  
             <div className="mb-4">&nbsp;</div>
-            <hr/>
-            <div>Set your deck : </div>
             {isPending && <Loading languageName={languageName} />}             
             <div className="grid sm:grid-cols-1">
                 {Array.isArray(languages) ? languages.map(

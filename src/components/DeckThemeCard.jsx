@@ -12,8 +12,10 @@ const DeckThemeCard = ({themes}) => {
   //console.log(menuItems.domain)
   const shoot = () => {
     menuItems.theme=theme
+    menuItems.themes=themes;
+    console.log(themes);
   }  
-  //console.log(themes);
+  
   return (
     <section data-theme="dark">
       <div className="box" onClick={shoot}>

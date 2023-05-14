@@ -42,14 +42,24 @@
   }
   
 :root {
-    --primary-bgcolor: #8AA6A3;
+    --primary-bgcolor: #FFFFFF; /* 8AA6A3 */
     --primary-font : neue-haas-grotesk-display,sans-serif;
     --secondary-font : neue-haas-grotesk-text, sans-serif;
     --color-bg: hsl(0, 0%, 100%);
     --color-bg-light: hsl(0, 0%, 100%); 
     --color-bg-dark: hsl(233, 8%, 19%);   
-    --color-bg-alu: hsl(190, 10%, 80%);     
-}
+    --color-bg-alu: hsl(190, 10%, 80%);  
+    --color-bg-greygreen : #8AA6A3;
+    --color-bg-softsand : #eae7e0;
+    --color-bg-softblue : hsl(196,59%,86%);
+    --color-bg-softgrey : hsl(0,0%,96%);
+    --color-blue: #43BED9;
+    --color-green: #6DBF1B;
+    --color-orange: #FA7F08;
+    --color-seattle-green:  hsl(182,100%,35%);
+    --color-bg-softred: hsl(354,75%,67%);
+    --color-bg-darkgrey :hsl(200,28%,30%);
+  }
 
 /* edit the variables in dark mode */
 [data-theme="dark"] {
@@ -57,25 +67,213 @@
   --color-bg-light: hsl(233, 8%, 19%);
 }
 
-.box {
-  /* 1. inner glow - for dark mode 👇 */
-box-shadow: inset 0 0 0.5px 1px hsla(0, 0%, 100%, 0.1),
-  /* 2. shadow ring 👇 */
-  0 0 0 1px hsla(230, 13%, 9%, 0.075),
-  /* 3. multiple soft shadows 👇 */
-  0 0.3px 0.4px hsla(230, 13%, 9%, 0.02),
-  0 0.9px 1.5px hsla(230, 13%, 9%, 0.045),
-  0 3.5px 6px hsla(230, 13%, 9%, 0.09);
+[data-theme="light"] {
+  --color-bg: hsl(0, 0%, 100%);
+  --color-bg-light: hsl(0, 0%, 100%);
+}
 
-width: 100%;
-height: 100%;
+/* deck-selected */
+.deck-selected {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  padding: 0.5em 0;
+  width: 100%;
+  height: 100%;
+  min-height: 4rem;  
+  background-color: var(--color-bg-softgrey);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+
+}
+
+.deck-selected h1 {
+  color: var(--color-bg-dark);
+  padding: 0 2em;
+}
+
+.deck-selected > div {
+  padding: 0.5rem;
+  background-color: white;
+  border-radius: 12px;
+  margin: 0 0.5em;
+}
+
+.deck-selected-language {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.deck-selected-language > img {
+  height: 35px;
+  width: 35px;
+  margin-right: 10px;
+  border-radius: 9999px;
+}
+
+.deck-selected-language > p {
+  background-color: white;
+  color: var(--color-seattle-green);
+  border: 1px solid white;
+  border-radius: 12px;
+  font-family : var(--secondary-font);
+  font-size: 0.8rem;
+  font-weight: 300;  
+  padding: 0.5rem;  
+}
+
+@media all and (max-width: 800px) {
+  .deck-selected {
+    justify-content: space-around;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .deck-selected {
+    flex-flow: column wrap;
+    padding: 0;
+  }
+  .deck-selected > div {
+    padding: 0.2rem;
+    border-radius: 0px;
+    margin: 0;
+    width:100%;
+    border-bottom: solid 1px var(--color-bg-softgrey);
+  }  
+
+}
 /*
-max-width: 50%;
-max-height: 50%;
-aspect-ratio: 1/1;
-background-color: var(--color-bg-light);
+deck-selection
 */
-border-radius: 12px;
+
+.deck-selection {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  border: 1px solid;
+  list-style: none;
+  margin: 0; 
+  background: deepskyblue;
+}
+
+.deck-selection a {
+  text-decoration: none;
+  display: block;
+  padding: 1em;
+  color: white;  
+}
+
+.deck-selection a:hover {
+  background: #1565C0;
+}
+
+@media all and (max-width: 800px) {
+  .deck-selection {
+    justify-content: space-around;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .deck-selection {
+    flex-flow: column wrap;
+    padding: 0;
+  }
+  .deck-selection a { 
+    text-align: center; 
+    padding: 10px;
+    border-top: 1px solid rgba(255, 255, 255,0.3); 
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
+  }
+  .deck-selection li:last-of-type a {
+    border-bottom: none;
+  }
+}
+
+
+/* deck-selection */
+
+.box {
+    /* 1. inner glow - for dark mode 👇 */
+  box-shadow: inset 0 0 0.5px 1px hsla(0, 0%, 100%, 0.1),
+    /* 2. shadow ring 👇 */
+    0 0 0 1px hsla(230, 13%, 9%, 0.075),
+    /* 3. multiple soft shadows 👇 */
+    0 0.3px 0.4px hsla(230, 13%, 9%, 0.02),
+    0 0.9px 1.5px hsla(230, 13%, 9%, 0.045),
+    0 3.5px 6px hsla(230, 13%, 9%, 0.09);
+
+  width: 100%;
+  height: 100%;
+  min-height: 10rem;
+  background-color: var(--color-bg-softblue);
+  /*
+  max-width: 50%;
+  max-height: 50%;
+  aspect-ratio: 1/1;
+
+  */
+  border-radius: 12px;
+}
+
+.translator-card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 0;
+  color: #141414;
+}
+.translator-card-header {
+  display: flex;
+  width: 100%;
+  height: 5rem;
+  background-color: hsl(182,100%,35%);
+  margin-bottom: 2rem;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.translator-card-langtitle {
+  font-family : var(--secondary-font);
+  font-size: 1.9rem;
+  font-weight: 700;  
+  padding: 0.5rem;
+  color: white;
+  align-items: center;
+  text-align: center;
+
+}
+
+.translator-card-lang {
+  font-family : var(--secondary-font);
+  font-size: 1.4rem;
+  font-weight: 600;  
+  padding: 0.2rem;
+}
+.translator-card-langen {
+  font-family : var(--secondary-font);
+  font-size: 1.2rem;
+  font-weight: 500;  
+  padding: 0.2rem;
+  margin-bottom: 1rem;
+  color: var(--color-bg-greygreen);
+}
+
+.translator-card-langfr {
+  font-family : var(--secondary-font);
+  font-size: 1.9rem;
+  font-weight: 700;  
+  padding: 0.5rem;
 }
 
 .box-phrase {
@@ -104,6 +302,15 @@ border-radius: 12px;
   background-color: white;
   border-radius: 0.2rem;
   max-width: 48rem;
+}
+
+.keyword-illustration {
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;  
+  max-width : 300px;
+  padding: 1em;
 }
 
 .box-deck {
@@ -190,12 +397,47 @@ font-size: 0.8em;
 border-radius: 12px;
 }
 
+.note-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0;
+  margin-top: 0.5rem;
+}
+
+.box-note {
+  box-shadow: inset 0 0 0.5px 1px hsla(0, 0%, 100%, 0.1),
+  /* 2. shadow ring 👇 */
+  0 0 0 1px hsla(230, 13%, 9%, 0.075),
+  /* 3. multiple soft shadows 👇 */
+  0 0.3px 0.4px hsla(230, 13%, 9%, 0.02),
+  0 0.9px 1.5px hsla(230, 13%, 9%, 0.045),
+  0 3.5px 6px hsla(230, 13%, 9%, 0.09);
+background-color: #fae208;
+color: black;
+width: 100%;
+height: 100%;
+font-family : var(--secondary-font);
+font-size: 0.8em;
+border-radius: 12px;
+}
+
+
 .x {
   color: #777;
   font: 24px/100% arial, sans-serif;
   text-decoration: none;
   text-shadow: 0 1px 0 #fff;
 }
+
+.deck-topic-img-wrap > img {
+  height: 100px;
+  min-width: auto;
+  object-fit: cover;
+  margin: 10px;
+}
+
+
 
 .deck-language-chart-container{
   display:flex;
@@ -475,7 +717,6 @@ p {
 .logo img{
     width:80px;
 }
-
 
 .container {
   display: flex;

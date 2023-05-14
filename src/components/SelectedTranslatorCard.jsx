@@ -15,7 +15,7 @@ const SelectedTranslatorCard = ({translator}) => {
     // console.log(translator)
   return (
     <>
-<section data-theme="dark">
+<section data-theme="light">
   <div className="box">
   <Link to={`/deckDomains/${language_uid}`}>
         <div className="flex flex-row justify-start items-center divide-x divide-gray-200 p-3">

@@ -6,6 +6,7 @@ import Layout from "../components/Layout"
 import Loading from "../components/Loading"
 import CurrentSelectionDeck from "../components/CurrentSelectionDeck"
 import DeckThemeIterator from "../components/DeckThemeIterator"
+import DeckSelection from "../components/DeckSelection"
 import { cardContext } from "../App";
 
 const DeckThemes = () => {
@@ -28,11 +29,9 @@ const DeckThemes = () => {
 
   return (
     <Layout>
-        <div className="mx-8">  
-            <div><CurrentSelectionDeck /></div>  
+        <div>  
+            <div><DeckSelection /></div>  
             <div className="mb-4">&nbsp;</div>
-            <hr/>
-            <div>Set your deck : </div>
             <div className="grid sm:grid-cols-1">
                 {Array.isArray(themes) ? themes.map(
                     el => {

@@ -4,7 +4,7 @@ import {useState, useEffect,useContext} from 'react'
 import { Link } from "react-router-dom"
 import Layout from "../components/Layout"
 import Loading from "../components/Loading"
-import CurrentSelectionDeck from "../components/CurrentSelectionDeck"
+import DeckSelection from "../components/DeckSelection"
 import DeckTopicIterator from "../components/DeckTopicIterator"
 
 import { cardContext } from "../App";
@@ -31,11 +31,9 @@ const DeckTopics = () => {
 
   return (
     <Layout>
-        <div className="mx-8">  
-            <div><CurrentSelectionDeck /></div>  
+        <div>  
+            <div><DeckSelection /></div>  
             <div className="mb-4">&nbsp;</div>
-            <hr/>
-            <div>Set your deck : </div>
             <div className="grid sm:grid-cols-1">
                 {Array.isArray(topics) ? topics.map(
                     el => {

@@ -4,13 +4,14 @@ import { Link } from "react-router-dom"
 import { cardContext } from "../App";
 
 const DeckTopicCard = ({topics}) => {
-  let {topic, stories} = topics
+  let {topic, topic_translated, topic_img, stories} = topics
   const menuItems = useContext(cardContext);
   let topic_id = topic.split(" ").join("").toLowerCase();
   // menuItems.topics=topics
   menuItems.component="DeckTopicCard"    
   const shoot = () => {
     menuItems.topic=topic
+    menuItems.topics=topics
     menuItems.stories=stories
   }
 
@@ -25,7 +26,7 @@ const DeckTopicCard = ({topics}) => {
                 <span className="flex justify-start">
                   <div className="flex flex-col items-start justify-items-start">
                   <span className="split basis-1/2 pl-5 pr-2 text-xl">{topic}</span>
-                  <span className="split basis-1/2 pl-5 pr-2">{topic}</span>
+                  <span className="split basis-1/2 pl-5 pr-2">{topic_translated}</span>
                   </div>
                 </span>
               </div>   

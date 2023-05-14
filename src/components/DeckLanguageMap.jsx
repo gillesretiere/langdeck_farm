@@ -20,7 +20,7 @@ const DeckLanguageMap = ({translator}) => {
 
   return (
     <div className="deck-lang-map-container">
-        <div className="deck-lang-map-container-label">Géographie de la langue<span className="deck-lang-map-container-title">{language_name_fr}</span></div>
+        <div className="deck-lang-map-container-label">Géographie de la langue&nbsp;<span>|</span><span className="deck-lang-map-container-title">{language_name_fr}</span></div>
         
         <div><DeckLanguageMapCard language={language}></DeckLanguageMapCard></div>
         <div><DeckLanguageCardIterator language={language}></DeckLanguageCardIterator></div>

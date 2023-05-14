@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import { cardContext } from "../App";
 import AudioPlayerWWW from "../components/AudioPlayerWWW"
 import KeyWordIterator from "../components/KeyWordIterator"
+import PhraseNoteCard from "../components/PhraseNoteCard"
 
 const DeckPhraseCard = ({phrases}) => {
   let {phrase, words} = phrases
@@ -23,6 +24,7 @@ const DeckPhraseCard = ({phrases}) => {
                 <span className="split basis-1/3 pl-5 pr-2">{phrase.phrase}</span>
                 <span className="split basis-1/3 p-5">
                   <KeyWordIterator words = {words}></KeyWordIterator>
+                  {phrase.notes && ( <PhraseNoteCard phrase = {phrase}></PhraseNoteCard>)}
                 </span>
                 
               </div>              

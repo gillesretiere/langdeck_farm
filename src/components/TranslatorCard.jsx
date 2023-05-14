@@ -4,20 +4,24 @@ import { cardContext } from "../App";
 import { Link } from "react-router-dom"
 
 const TranslatorCard = ({translator}) => {
-    let {language_uid, language_name_en, language_name_native, flag_icon} = translator;
+    let {language_uid, language_name_fr, language_name_en, language_name_native, flag_icon} = translator;
     const menuItems = useContext(cardContext);
     menuItems.language.language_uid=language_uid
     menuItems.language.flag_icon=flag_icon
     menuItems.language.language_name_en=language_name_en
     menuItems.component="TranslatorCard"
+    
+    const shoot = () => {
+      menuItems.translator = translator
+    }
     // console.log(menuItems.language.language_uid)    
     // console.log(translator)
   return (
     <>
-<section data-theme="dark">
-  <div className="box">
-  <Link to={`/translators/${language_uid}`}>
-        <div className="flex flex-row justify-start items-center divide-x divide-gray-200 p-3">
+<section data-theme="light">
+  <div className="box" onClick={shoot}>
+    <Link to={`/deckDomains/${language_uid}`}>
+        <div className="flex flex-row justify-start items-center divide-x divide-gray-800 p-3">
           <span className="split basis-1/2 pr-2 flex justify-center"><img className="h-10 w-10 rounded-full" src={flag_icon} alt="" /></span>
           <span className="split basis-1/2 pr-2 flex justify-start">
             <div className="flex flex-col items-start justify-items-start">
@@ -26,6 +30,7 @@ const TranslatorCard = ({translator}) => {
             </div>
           </span>
         </div>
+        <div>{language_name_fr}</div>
       </Link>    
   </div>
 </section>    

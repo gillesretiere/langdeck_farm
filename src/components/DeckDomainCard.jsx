@@ -11,6 +11,7 @@ const DeckDomainCard = ({domains}) => {
   menuItems.component="DeckDomainCard"  
   const shoot = () => {
     menuItems.domain=domain
+    menuItems.domains=domains
   }  
   return (
     <section data-theme="dark">
