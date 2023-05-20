@@ -21,23 +21,23 @@ const DeckStories = () => {
     let topics = menuItems.topics
     let domain = menuItems.domain
     let topic = menuItems.topic
-    console.log(topics)
+    // console.log(topics)
 
 
   return (
     <Layout>
         <div>  
-            <div><DeckSelection /></div>  
-            <div className="mb-4">&nbsp;</div>
-            <div className="grid sm:grid-cols-1">
-                {Array.isArray(stories) ? stories.map(
-                    el => {
-                    return (                               
-                      <DeckStoryIterator key={el._id} stories = {el} />                    
-                    )
-                })
-                : <div>{stories}</div>}
-            </div>              
+            <div className="mx-8">
+              <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
+                  {Array.isArray(stories) ? stories.map(
+                      el => {
+                      return (                               
+                        <DeckStoryIterator key={el._id} stories = {el} />                    
+                      )
+                  })
+                  : <div>{stories}</div>}
+              </div>       
+            </div>       
       
         </div> 
 

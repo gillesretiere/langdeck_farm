@@ -23,8 +23,7 @@ const DeckPhrases = () => {
     let topics = menuItems.topics
     let domain = menuItems.domain
     let topic = menuItems.topic
-    let phrases = menuItems.phrases
-    console.log(stories)
+    let phrases = stories.phrases
 
 
   return (

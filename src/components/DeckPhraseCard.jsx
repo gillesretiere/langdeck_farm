@@ -12,7 +12,7 @@ const DeckPhraseCard = ({phrases}) => {
   menuItems.component="DeckPhraseCard"    
   let vk_lemma = eval(phrase.vk_lemma);
   
-  console.log(phrases);
+  // console.log(phrases);
   return (
     <section>
       <div className="box-phrase">

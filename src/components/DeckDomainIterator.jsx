@@ -1,8 +1,9 @@
 import React from 'react'
 import DeckDomainCard from "../components/DeckDomainCard"
+import DeckDomainCard2 from "../components/DeckDomainCard2"
 
 const DeckDomainIterator = ({languageStories}) => {
-    let {language, domains} = languageStories;
+  let {language, domains} = languageStories;
     // console.log(languageStories);    
   return (
     <>

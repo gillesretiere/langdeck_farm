@@ -4,9 +4,9 @@ import { Link } from "react-router-dom"
 import { cardContext } from "../App";
 
 const DeckDomainCard = ({domains}) => {
-  let {domain, themes} = domains;
+  let {domain, domain_translated, domain_img, themes} = domains;
   const menuItems = useContext(cardContext);
-  menuItems.domains=domains
+  // menuItems.domains=domains
   menuItems.themes=themes
   menuItems.component="DeckDomainCard"  
   const shoot = () => {
@@ -14,18 +14,19 @@ const DeckDomainCard = ({domains}) => {
     menuItems.domains=domains
   }  
   return (
-    <section data-theme="dark">
+    <section data-theme="light">
       <div className="box" onClick={shoot}>
         <Link to={`/deckThemes/${domain}`}>
-            <div className="flex flex-row justify-start items-center p-3">
-                <span className="flex justify-start"><img className="h-10 w-10 rounded-full" src="https://res.cloudinary.com/dhc7ovnwk/image/upload/v1682101321/langdeck/medical-history.png" alt="medical" /></span>
-                <span className="flex justify-start">
-                  <div className="flex flex-col items-start justify-items-start">
-                  <span className="split basis-1/2 pl-5 pr-2 text-xl">{domain}</span>
-                  <span className="split basis-1/2 pl-5 pr-2">{domain}</span>
-                  </div>
-                </span>
-              </div>            
+            <div className="translator-card-wrapper">
+              <div className="translator-card-header">
+                <div className="translator-card-langtitle">{domain}</div>
+              </div>              
+              <div className="translator-card-lang">{domain_translated}</div>
+              <div className="translator-card-sep"></div>         
+              <div className="deck-card-image"><img className="deck-card-image" src={domain_img} alt="Illustration domaine"></img></div>                    
+              <div className="translator-card-sep"></div>  
+            <div className="translator-card-footer">langdeck</div>      
+            </div>            
         </Link>    
       </div>
     </section>   

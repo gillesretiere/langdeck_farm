@@ -5,7 +5,7 @@ const DeckTopicIterator = ({topics}) => {
     let {topic, stories} = topics;
     // console.log(topics);    
   return (
-        <>
+        <div className="">
             {Array.isArray(topics) ? topics.map(
                 el => {
                 return (                               
@@ -13,7 +13,7 @@ const DeckTopicIterator = ({topics}) => {
                 )
             })
             : <DeckTopicCard topics = {topics} /> }
-        </>
+        </div>
   )
 }
 

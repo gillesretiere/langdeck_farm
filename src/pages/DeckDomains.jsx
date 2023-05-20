@@ -7,6 +7,7 @@ import Loading from "../components/Loading"
 import CurrentSelectionDeck from "../components/CurrentSelectionDeck"
 import DeckDomainIterator from "../components/DeckDomainIterator"
 import DeckSelection from "../components/DeckSelection"
+import DeckMemorizer from "../components/DeckMemorizer"
 
 import { cardContext } from "../App";
 
@@ -46,12 +47,9 @@ const DeckDomains = () => {
 
   return (
     <Layout>
-        <div className="mx-0">  
-
-            <div><DeckSelection /></div>  
-            <div className="mb-4">&nbsp;</div>
+        <div className="mx-8">  
             {isPending && <Loading languageName={languageName} />}             
-            <div className="grid sm:grid-cols-1">
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
                 {Array.isArray(languages) ? languages.map(
                     el => {
                     return (                               

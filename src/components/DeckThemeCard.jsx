@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import { cardContext } from "../App";
 
 const DeckThemeCard = ({themes}) => {
-  let {theme, topics} = themes
+  let {theme,theme_translated, theme_img, topics} = themes
   const menuItems = useContext(cardContext);
   menuItems.topics=topics
   menuItems.themes=themes
@@ -17,18 +17,19 @@ const DeckThemeCard = ({themes}) => {
   }  
   
   return (
-    <section data-theme="dark">
+    <section data-theme="light">
       <div className="box" onClick={shoot}>
         <Link to={`/deckTopics/${theme}`}>
-        <div className="flex flex-row justify-start items-center p-3">
-                <span className="flex justify-start"><img className="h-10 w-10 rounded-full" src="https://res.cloudinary.com/dhc7ovnwk/image/upload/v1682101321/langdeck/medical-history.png" alt="medical" /></span>
-                <span className="flex justify-start">
-                  <div className="flex flex-col items-start justify-items-start">
-                  <span className="split basis-1/2 pl-5 pr-2 text-xl">{theme}</span>
-                  <span className="split basis-1/2 pl-5 pr-2">{theme}</span>
-                  </div>
-                </span>
-              </div>   
+          <div className="translator-card-wrapper">
+              <div className="translator-card-header">
+                <div className="translator-card-langtitle">{theme}</div>
+              </div>              
+              <div className="translator-card-lang">{theme_translated}</div>
+              <div className="translator-card-sep"></div>                          
+            <div className="deck-card-image"><img className="deck-card-image" src={theme_img} alt="illustration for theme"></img></div>
+            <div className="translator-card-sep"></div>  
+            <div className="translator-card-footer"></div>              
+          </div>    
         </Link>    
       </div>
     </section>  

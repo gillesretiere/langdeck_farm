@@ -31,10 +31,8 @@ const DeckTopics = () => {
 
   return (
     <Layout>
-        <div>  
-            <div><DeckSelection /></div>  
-            <div className="mb-4">&nbsp;</div>
-            <div className="grid sm:grid-cols-1">
+        <div className="mx-8"> 
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
                 {Array.isArray(topics) ? topics.map(
                     el => {
                     return (                               

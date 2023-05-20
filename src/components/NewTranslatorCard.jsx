@@ -24,10 +24,12 @@ const NewTranslatorCard = ({translator}) => {
                     <div className="translator-card-wrapper">
                         <div className="translator-card-header">
                             <div className="translator-card-langtitle">{language_name_fr}</div>
-                        </div>                        
-                        <div><img className="h-20 w-20 m-2 rounded-full" src={flag_icon} alt="" /></div>
+                        </div>     
+                        <hr/>
                         <div className="translator-card-lang">{language_name_native}</div>
-                        <div className="translator-card-langen">{language_name_en}</div>
+                        <div className="translator-card-sep"></div>         
+                        <div className="translator-card-image"><img className="h-20 w-20 rounded-full" src={flag_icon} alt="" /></div>                        
+                        <div className="translator-card-footer">&nbsp;</div>
                     </div>
                 </Link>    
             </div>

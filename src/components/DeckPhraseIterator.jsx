@@ -4,7 +4,7 @@ import DeckPhraseCard from "../components/DeckPhraseCard"
 
 const DeckPhraseIterator = ({phrases}) => {
     let {phrase} = phrases;
-    console.log(phrases);    
+    // console.log(phrases);    
     
   return (
         <>
